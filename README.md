@@ -1,5 +1,24 @@
+# Ignite Learning Paths - Train the trainer
 
-# Contributing
+Welcome, Presenter! 
+
+We're glad you are here and look forward to your delivery of this amazing content. As an experienced presenter, we know you know HOW to present so this guide will focus on WHAT you need to present. It will provide you a full run-through of the presentation created by the presentation design team. 
+
+Along with the video of the presentation, this repository will link to all the assets you need to successfully present including PowerPoint slides and demo instructions & code. 
+
+Here all the learning paths available:
+
+- [Building Applications for the Cloud](./apps/README.md)
+- [Developers Guide to AI](./aiml/README.md)
+- [Azure Fundamentals](./afun/README.md)
+- [Managing Cloud Operations](./mco/README.md)
+- [Modernizing Data, Applications, and APIs to the Cloud](./mod/README.md)
+- [Migrating your Server Infrastructure](./msi/README.md)
+- [Improving Your Reliability through Modern Operations Practices](./ops/README.md)
+
+This repository is related to **[Ignite Learning Paths](https://github.com/microsoft/ignite-learning-paths)** Where you will find the presentation.
+
+## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
@@ -13,7 +32,7 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-# Legal Notices
+## Legal Notices
 
 Microsoft and any contributors grant you a license to the Microsoft documentation and other content
 in this repository under the [Creative Commons Attribution 4.0 International Public License](https://creativecommons.org/licenses/by/4.0/legalcode),
