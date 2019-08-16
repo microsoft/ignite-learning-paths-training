@@ -1,7 +1,7 @@
 # Improving Your Reliability through Modern Operations Practices
 
-- [ops10](./ops10)
-- [ops20](./ops20)
-- [ops30](./ops30)
-- [ops40](./ops40)
-- [ops50](./ops50)
+- [OPS10: Building the Foundation for Modern Ops: Monitoring ](./ops10)
+- [OPS20: Responding to Incidents ](./ops20)
+- [OPS30: Learning from Failure ](./ops30)
+- [OPS40: Deployment Practices for Greater Reliability ](./ops40)
+- [OPS50: Preparing for Growth: Capacity Planning and Scaling ](./ops50)
