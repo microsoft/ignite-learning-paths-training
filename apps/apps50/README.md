@@ -5,7 +5,7 @@
 First you will need to [deploy the Tailwind Traders Reference Deployment to an AKS instance](https://github.com/neilpeterson/tailwind-reference-deployment#tailwind-traders-aks).  Be sure to select the "Deploy to Azure" button that is under the "Tailwind Traders AKS" heading.  Follow the instructions in the README of the above linked repo to obtain the url of the newly deployed Tailwind Traders website, we will refer to this url in the next section as the `{AKS_BACKEND_ENDPOINT}`
 
 Next, you will need to deploy the Apps50 specific resources provided by the "Deploy to Azure" button below:
-[![Deploy to Azure](https://azuredeploy.net/deploybutton.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Ftoolboc%2Fignite-learning-paths-training%2Fapps50deployment%2Fapps%2Fapps50%2Fdeploy%2Fdeployment.json)
+[![Deploy to Azure](https://azuredeploy.net/deploybutton.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2Fignite-learning-paths-training%2Fmaster%2Fapps%2Fapps50%2Fdeploy%2Fdeployment.json)
 
 You will need to provide values for the following three parameters:
 ![](./assets/settings.png)
