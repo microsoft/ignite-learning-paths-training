@@ -2,34 +2,10 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-      "frontdoors_tailwind_apps50_name": {
-          "defaultValue": "tailwind-apps50",
-          "type": "String"
-      },
-      "sites_tailwindtraders_website_eastus_apps50_name": {
-          "defaultValue": "tailwindtraders-website-eastus-apps50",
-          "type": "String"
-      },
-      "sites_tailwindtraders_website_auseast_apps50_name": {
-          "defaultValue": "tailwindtraders-website-auseast-apps50",
-          "type": "String"
-      },
-      "components_tailwindtraders_appinsights_apps50_name": {
-          "defaultValue": "tailwindtraders-appinsights-apps50",
-          "type": "String"
-      },
-      "frontdoorwebapplicationfirewallpolicies_dontbemean_name": {
-          "defaultValue": "dontbemean",
-          "type": "String"
-      },
-      "serverfarms_tailwindtraders_website_eastus_apps50_plan_name": {
-          "defaultValue": "tailwindtraders-website-eastus-apps50-plan",
-          "type": "String"
-      },
-      "serverfarms_tailwindtraders_website_auseast_apps50_plan_name": {
-          "defaultValue": "tailwindtraders-website-auseast-apps50-plan",
-          "type": "String"
-      },
+    "resourceNameSuffix":  {
+        "defaultValue": "deployment",
+        "type": "String"
+     },
       "apiUrl":  {
         "defaultValue": "{AKS_BACKEND_ENDPOINT}/webbff/v1",
         "type": "String"
@@ -39,12 +15,20 @@
         "type": "String"
      }
   },
-  "variables": {},
+  "variables": {
+    "frontdoors_tailwind_apps50_name": "[concat('tailwind-apps50-',parameters('resourceNameSuffix'))]",
+    "sites_tailwindtraders_website_eastus_apps50_name": "[concat('tailwindtraders-website-eastus-apps50-',parameters('resourceNameSuffix'))]",
+    "sites_tailwindtraders_website_auseast_apps50_name": "[concat('tailwindtraders-website-auseast-apps50-',parameters('resourceNameSuffix'))]",
+    "components_tailwindtraders_appinsights_apps50_name": "[concat('tailwindtraders-appinsights-apps50-',parameters('resourceNameSuffix'))]",
+    "frontdoorwebapplicationfirewallpolicies_dontbemean_name": "[concat('dontbemean-',parameters('resourceNameSuffix'))]",
+    "serverfarms_tailwindtraders_website_eastus_apps50_plan_name": "[concat('tailwindtraders-website-eastus-apps50-plan-',parameters('resourceNameSuffix'))]",
+    "serverfarms_tailwindtraders_website_auseast_apps50_plan_name": "[concat('tailwindtraders-website-auseast-apps50-plan-',parameters('resourceNameSuffix'))]"
+  },
   "resources": [
       {
           "type": "microsoft.insights/components",
           "apiVersion": "2015-05-01",
-          "name": "[parameters('components_tailwindtraders_appinsights_apps50_name')]",
+          "name": "[variables('components_tailwindtraders_appinsights_apps50_name')]",
           "location": "eastus",
           "kind": "web",
           "properties": {
@@ -56,40 +40,40 @@
       {
           "type": "Microsoft.Network/frontdoors",
           "apiVersion": "2018-08-01",
-          "name": "[parameters('frontdoors_tailwind_apps50_name')]",
+          "name": "[variables('frontdoors_tailwind_apps50_name')]",
           "location": "Global",
           "properties": {
               "resourceState": "Enabled",
               "backendPools": [
                   {
-                      "id": "[concat(resourceId('Microsoft.Network/frontdoors', parameters('frontdoors_tailwind_apps50_name')), '/BackendPools/storefront')]",
+                      "id": "[concat(resourceId('Microsoft.Network/frontdoors', variables('frontdoors_tailwind_apps50_name')), '/BackendPools/storefront')]",
                       "name": "storefront",
                       "properties": {
                           "backends": [
                               {
-                                  "address": "[concat(parameters('sites_tailwindtraders_website_auseast_apps50_name'), '.azurewebsites.net')]",
+                                  "address": "[concat(variables('sites_tailwindtraders_website_auseast_apps50_name'), '.azurewebsites.net')]",
                                   "httpPort": 80,
                                   "httpsPort": 443,
                                   "priority": 1,
                                   "weight": 50,
-                                  "backendHostHeader": "[concat(parameters('sites_tailwindtraders_website_auseast_apps50_name'), '.azurewebsites.net')]",
+                                  "backendHostHeader": "[concat(variables('sites_tailwindtraders_website_auseast_apps50_name'), '.azurewebsites.net')]",
                                   "enabledState": "Enabled"
                               },
                               {
-                                  "address": "[concat(parameters('sites_tailwindtraders_website_eastus_apps50_name'), '.azurewebsites.net')]",
+                                  "address": "[concat(variables('sites_tailwindtraders_website_eastus_apps50_name'), '.azurewebsites.net')]",
                                   "httpPort": 80,
                                   "httpsPort": 443,
                                   "priority": 1,
                                   "weight": 50,
-                                  "backendHostHeader": "[concat(parameters('sites_tailwindtraders_website_eastus_apps50_name'), '.azurewebsites.net')]",
+                                  "backendHostHeader": "[concat(variables('sites_tailwindtraders_website_eastus_apps50_name'), '.azurewebsites.net')]",
                                   "enabledState": "Enabled"
                               }
                           ],
                           "healthProbeSettings": {
-                              "id": "[concat(resourceId('Microsoft.Network/frontdoors', parameters('frontdoors_tailwind_apps50_name')), '/HealthProbeSettings/healthProbeSettings-1567028054363')]"
+                              "id": "[concat(resourceId('Microsoft.Network/frontdoors', variables('frontdoors_tailwind_apps50_name')), '/HealthProbeSettings/healthProbeSettings-1567028054363')]"
                           },
                           "loadBalancingSettings": {
-                              "id": "[concat(resourceId('Microsoft.Network/frontdoors', parameters('frontdoors_tailwind_apps50_name')), '/LoadBalancingSettings/loadBalancingSettings-1567028054363')]"
+                              "id": "[concat(resourceId('Microsoft.Network/frontdoors', variables('frontdoors_tailwind_apps50_name')), '/LoadBalancingSettings/loadBalancingSettings-1567028054363')]"
                           },
                           "resourceState": "Enabled"
                       }
@@ -97,7 +81,7 @@
               ],
               "healthProbeSettings": [
                   {
-                      "id": "[concat(resourceId('Microsoft.Network/frontdoors', parameters('frontdoors_tailwind_apps50_name')), '/HealthProbeSettings/healthProbeSettings-1567028054363')]",
+                      "id": "[concat(resourceId('Microsoft.Network/frontdoors', variables('frontdoors_tailwind_apps50_name')), '/HealthProbeSettings/healthProbeSettings-1567028054363')]",
                       "name": "healthProbeSettings-1567028054363",
                       "properties": {
                           "intervalInSeconds": 5,
@@ -109,10 +93,10 @@
               ],
               "frontendEndpoints": [
                   {
-                      "id": "[concat(resourceId('Microsoft.Network/frontdoors', parameters('frontdoors_tailwind_apps50_name')), concat('/FrontendEndpoints/', parameters('frontdoors_tailwind_apps50_name'), '-azurefd-net'))]",
-                      "name": "[concat(parameters('frontdoors_tailwind_apps50_name'), '-azurefd-net')]",
+                      "id": "[concat(resourceId('Microsoft.Network/frontdoors', variables('frontdoors_tailwind_apps50_name')), concat('/FrontendEndpoints/', variables('frontdoors_tailwind_apps50_name'), '-azurefd-net'))]",
+                      "name": "[concat(variables('frontdoors_tailwind_apps50_name'), '-azurefd-net')]",
                       "properties": {
-                          "hostName": "[concat(parameters('frontdoors_tailwind_apps50_name'), '.azurefd.net')]",
+                          "hostName": "[concat(variables('frontdoors_tailwind_apps50_name'), '.azurefd.net')]",
                           "sessionAffinityEnabledState": "Disabled",
                           "sessionAffinityTtlSeconds": 0,
                           "resourceState": "Enabled"
@@ -121,7 +105,7 @@
               ],
               "loadBalancingSettings": [
                   {
-                      "id": "[concat(resourceId('Microsoft.Network/frontdoors', parameters('frontdoors_tailwind_apps50_name')), '/LoadBalancingSettings/loadBalancingSettings-1567028054363')]",
+                      "id": "[concat(resourceId('Microsoft.Network/frontdoors', variables('frontdoors_tailwind_apps50_name')), '/LoadBalancingSettings/loadBalancingSettings-1567028054363')]",
                       "name": "loadBalancingSettings-1567028054363",
                       "properties": {
                           "additionalLatencyMilliseconds": 0,
@@ -133,12 +117,12 @@
               ],
               "routingRules": [
                   {
-                      "id": "[concat(resourceId('Microsoft.Network/frontdoors', parameters('frontdoors_tailwind_apps50_name')), '/RoutingRules/root')]",
+                      "id": "[concat(resourceId('Microsoft.Network/frontdoors', variables('frontdoors_tailwind_apps50_name')), '/RoutingRules/root')]",
                       "name": "root",
                       "properties": {
                           "frontendEndpoints": [
                               {
-                                  "id": "[concat(resourceId('Microsoft.Network/frontdoors', parameters('frontdoors_tailwind_apps50_name')), concat('/FrontendEndpoints/', parameters('frontdoors_tailwind_apps50_name'), '-azurefd-net'))]"
+                                  "id": "[concat(resourceId('Microsoft.Network/frontdoors', variables('frontdoors_tailwind_apps50_name')), concat('/FrontendEndpoints/', variables('frontdoors_tailwind_apps50_name'), '-azurefd-net'))]"
                               }
                           ],
                           "acceptedProtocols": [
@@ -151,7 +135,7 @@
                           ],
                           "forwardingProtocol": "HttpsOnly",
                           "backendPool": {
-                              "id": "[concat(resourceId('Microsoft.Network/frontdoors', parameters('frontdoors_tailwind_apps50_name')), '/BackendPools/storefront')]"
+                              "id": "[concat(resourceId('Microsoft.Network/frontdoors', variables('frontdoors_tailwind_apps50_name')), '/BackendPools/storefront')]"
                           },
                           "enabledState": "Enabled",
                           "resourceState": "Enabled"
@@ -159,13 +143,13 @@
                   }
               ],
               "enabledState": "Enabled",
-              "friendlyName": "[parameters('frontdoors_tailwind_apps50_name')]"
+              "friendlyName": "[variables('frontdoors_tailwind_apps50_name')]"
           }
       },
       {
           "type": "Microsoft.Network/frontdoorwebapplicationfirewallpolicies",
           "apiVersion": "2018-08-01",
-          "name": "[parameters('frontdoorwebapplicationfirewallpolicies_dontbemean_name')]",
+          "name": "[variables('frontdoorwebapplicationfirewallpolicies_dontbemean_name')]",
           "location": "Global",
           "properties": {
               "policySettings": {
@@ -183,7 +167,7 @@
       {
           "type": "Microsoft.Web/serverfarms",
           "apiVersion": "2016-09-01",
-          "name": "[parameters('serverfarms_tailwindtraders_website_auseast_apps50_plan_name')]",
+          "name": "[variables('serverfarms_tailwindtraders_website_auseast_apps50_plan_name')]",
           "location": "Australia East",
           "sku": {
               "name": "P1v2",
@@ -194,7 +178,7 @@
           },
           "kind": "app",
           "properties": {
-              "name": "[parameters('serverfarms_tailwindtraders_website_auseast_apps50_plan_name')]",
+              "name": "[variables('serverfarms_tailwindtraders_website_auseast_apps50_plan_name')]",
               "perSiteScaling": false,
               "reserved": false,
               "targetWorkerCount": 0,
@@ -204,7 +188,7 @@
       {
           "type": "Microsoft.Web/serverfarms",
           "apiVersion": "2016-09-01",
-          "name": "[parameters('serverfarms_tailwindtraders_website_eastus_apps50_plan_name')]",
+          "name": "[variables('serverfarms_tailwindtraders_website_eastus_apps50_plan_name')]",
           "location": "East US",
           "sku": {
               "name": "P1v2",
@@ -215,7 +199,7 @@
           },
           "kind": "app",
           "properties": {
-              "name": "[parameters('serverfarms_tailwindtraders_website_eastus_apps50_plan_name')]",
+              "name": "[variables('serverfarms_tailwindtraders_website_eastus_apps50_plan_name')]",
               "perSiteScaling": false,
               "reserved": false,
               "targetWorkerCount": 0,
@@ -225,10 +209,10 @@
       {
           "type": "Microsoft.Web/sites",
           "apiVersion": "2016-08-01",
-          "name": "[parameters('sites_tailwindtraders_website_auseast_apps50_name')]",
+          "name": "[variables('sites_tailwindtraders_website_auseast_apps50_name')]",
           "location": "Australia East",
           "dependsOn": [
-              "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_tailwindtraders_website_auseast_apps50_plan_name'))]"
+              "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_tailwindtraders_website_auseast_apps50_plan_name'))]"
           ],
           "kind": "app",
           "resources": [
@@ -237,7 +221,7 @@
               "name": "web",
               "type": "sourcecontrols",
               "dependsOn": [
-                "[resourceId('Microsoft.Web/Sites', parameters('sites_tailwindtraders_website_auseast_apps50_name'))]"
+                "[resourceId('Microsoft.Web/Sites', variables('sites_tailwindtraders_website_auseast_apps50_name'))]"
               ],
               "properties": {
                 "RepoUrl": "https://github.com/microsoft/TailwindTraders-Website.git",
@@ -259,7 +243,7 @@
                 },
                 {
                   "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
-                  "value": "[reference(concat('microsoft.insights/components/', parameters('components_tailwindtraders_appinsights_apps50_name')), '2015-05-01').InstrumentationKey]"
+                  "value": "[reference(concat('microsoft.insights/components/', variables('components_tailwindtraders_appinsights_apps50_name')), '2015-05-01').InstrumentationKey]"
                 },
                 {
                   "name": "ApplicationInsightsAgent_EXTENSION_VERSION",
@@ -310,17 +294,17 @@
               "enabled": true,
               "hostNameSslStates": [
                   {
-                      "name": "[concat(parameters('sites_tailwindtraders_website_auseast_apps50_name'), '.azurewebsites.net')]",
+                      "name": "[concat(variables('sites_tailwindtraders_website_auseast_apps50_name'), '.azurewebsites.net')]",
                       "sslState": "Disabled",
                       "hostType": "Standard"
                   },
                   {
-                      "name": "[concat(parameters('sites_tailwindtraders_website_auseast_apps50_name'), '.scm.azurewebsites.net')]",
+                      "name": "[concat(variables('sites_tailwindtraders_website_auseast_apps50_name'), '.scm.azurewebsites.net')]",
                       "sslState": "Disabled",
                       "hostType": "Repository"
                   }
               ],
-              "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_tailwindtraders_website_auseast_apps50_plan_name'))]",
+              "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_tailwindtraders_website_auseast_apps50_plan_name'))]",
               "reserved": false,
               "scmSiteAlsoStopped": false,
               "clientAffinityEnabled": true,
@@ -334,10 +318,10 @@
       {
           "type": "Microsoft.Web/sites",
           "apiVersion": "2016-08-01",
-          "name": "[parameters('sites_tailwindtraders_website_eastus_apps50_name')]",
+          "name": "[variables('sites_tailwindtraders_website_eastus_apps50_name')]",
           "location": "East US",
           "dependsOn": [
-              "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_tailwindtraders_website_eastus_apps50_plan_name'))]"
+              "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_tailwindtraders_website_eastus_apps50_plan_name'))]"
           ],
           "kind": "app",
           "resources": [
@@ -346,7 +330,7 @@
               "name": "web",
               "type": "sourcecontrols",
               "dependsOn": [
-                "[resourceId('Microsoft.Web/Sites', parameters('sites_tailwindtraders_website_eastus_apps50_name'))]"
+                "[resourceId('Microsoft.Web/Sites', variables('sites_tailwindtraders_website_eastus_apps50_name'))]"
               ],
               "properties": {
                 "RepoUrl": "https://github.com/microsoft/TailwindTraders-Website.git",
@@ -368,7 +352,7 @@
                 },
                 {
                   "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
-                  "value": "[reference(concat('microsoft.insights/components/', parameters('components_tailwindtraders_appinsights_apps50_name')), '2015-05-01').InstrumentationKey]"
+                  "value": "[reference(concat('microsoft.insights/components/', variables('components_tailwindtraders_appinsights_apps50_name')), '2015-05-01').InstrumentationKey]"
                 },
                 {
                   "name": "ApplicationInsightsAgent_EXTENSION_VERSION",
@@ -419,17 +403,17 @@
               "enabled": true,
               "hostNameSslStates": [
                   {
-                      "name": "[concat(parameters('sites_tailwindtraders_website_eastus_apps50_name'), '.azurewebsites.net')]",
+                      "name": "[concat(variables('sites_tailwindtraders_website_eastus_apps50_name'), '.azurewebsites.net')]",
                       "sslState": "Disabled",
                       "hostType": "Standard"
                   },
                   {
-                      "name": "[concat(parameters('sites_tailwindtraders_website_eastus_apps50_name'), '.scm.azurewebsites.net')]",
+                      "name": "[concat(variables('sites_tailwindtraders_website_eastus_apps50_name'), '.scm.azurewebsites.net')]",
                       "sslState": "Disabled",
                       "hostType": "Repository"
                   }
               ],
-              "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_tailwindtraders_website_eastus_apps50_plan_name'))]",
+              "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_tailwindtraders_website_eastus_apps50_plan_name'))]",
               "reserved": false,
               "scmSiteAlsoStopped": false,
               "clientAffinityEnabled": true,
@@ -443,10 +427,10 @@
       {
           "type": "Microsoft.Web/sites/config",
           "apiVersion": "2016-08-01",
-          "name": "[concat(parameters('sites_tailwindtraders_website_auseast_apps50_name'), '/web')]",
+          "name": "[concat(variables('sites_tailwindtraders_website_auseast_apps50_name'), '/web')]",
           "location": "Australia East",
           "dependsOn": [
-              "[resourceId('Microsoft.Web/sites', parameters('sites_tailwindtraders_website_auseast_apps50_name'))]"
+              "[resourceId('Microsoft.Web/sites', variables('sites_tailwindtraders_website_auseast_apps50_name'))]"
           ],
           "properties": {
               "numberOfWorkers": 1,
@@ -535,10 +519,10 @@
       {
           "type": "Microsoft.Web/sites/config",
           "apiVersion": "2016-08-01",
-          "name": "[concat(parameters('sites_tailwindtraders_website_eastus_apps50_name'), '/web')]",
+          "name": "[concat(variables('sites_tailwindtraders_website_eastus_apps50_name'), '/web')]",
           "location": "East US",
           "dependsOn": [
-              "[resourceId('Microsoft.Web/sites', parameters('sites_tailwindtraders_website_eastus_apps50_name'))]"
+              "[resourceId('Microsoft.Web/sites', variables('sites_tailwindtraders_website_eastus_apps50_name'))]"
           ],
           "properties": {
               "numberOfWorkers": 1,
@@ -628,10 +612,10 @@
       {
           "type": "Microsoft.Web/sites/deployments",
           "apiVersion": "2016-08-01",
-          "name": "[concat(parameters('sites_tailwindtraders_website_auseast_apps50_name'), '/d998e901c2526217ba0999a9f37e0c829f7c6cfe')]",
+          "name": "[concat(variables('sites_tailwindtraders_website_auseast_apps50_name'), '/d998e901c2526217ba0999a9f37e0c829f7c6cfe')]",
           "location": "Australia East",
           "dependsOn": [
-              "[resourceId('Microsoft.Web/sites', parameters('sites_tailwindtraders_website_auseast_apps50_name'))]"
+              "[resourceId('Microsoft.Web/sites', variables('sites_tailwindtraders_website_auseast_apps50_name'))]"
           ],
           "properties": {
               "id": "d998e901c2526217ba0999a9f37e0c829f7c6cfe",
@@ -648,10 +632,10 @@
       {
           "type": "Microsoft.Web/sites/deployments",
           "apiVersion": "2016-08-01",
-          "name": "[concat(parameters('sites_tailwindtraders_website_eastus_apps50_name'), '/d998e901c2526217ba0999a9f37e0c829f7c6cfe')]",
+          "name": "[concat(variables('sites_tailwindtraders_website_eastus_apps50_name'), '/d998e901c2526217ba0999a9f37e0c829f7c6cfe')]",
           "location": "East US",
           "dependsOn": [
-              "[resourceId('Microsoft.Web/sites', parameters('sites_tailwindtraders_website_eastus_apps50_name'))]"
+              "[resourceId('Microsoft.Web/sites', variables('sites_tailwindtraders_website_eastus_apps50_name'))]"
           ],
           "properties": {
               "id": "d998e901c2526217ba0999a9f37e0c829f7c6cfe",
@@ -667,10 +651,10 @@
       {
           "type": "Microsoft.Web/sites/hostNameBindings",
           "apiVersion": "2016-08-01",
-          "name": "[concat(parameters('sites_tailwindtraders_website_auseast_apps50_name'), '/', parameters('sites_tailwindtraders_website_auseast_apps50_name'), '.azurewebsites.net')]",
+          "name": "[concat(variables('sites_tailwindtraders_website_auseast_apps50_name'), '/', variables('sites_tailwindtraders_website_auseast_apps50_name'), '.azurewebsites.net')]",
           "location": "Australia East",
           "dependsOn": [
-              "[resourceId('Microsoft.Web/sites', parameters('sites_tailwindtraders_website_auseast_apps50_name'))]"
+              "[resourceId('Microsoft.Web/sites', variables('sites_tailwindtraders_website_auseast_apps50_name'))]"
           ],
           "properties": {
               "siteName": "tailwindtraders-website-auseast-apps50",
@@ -680,10 +664,10 @@
       {
           "type": "Microsoft.Web/sites/hostNameBindings",
           "apiVersion": "2016-08-01",
-          "name": "[concat(parameters('sites_tailwindtraders_website_eastus_apps50_name'), '/', parameters('sites_tailwindtraders_website_eastus_apps50_name'), '.azurewebsites.net')]",
+          "name": "[concat(variables('sites_tailwindtraders_website_eastus_apps50_name'), '/', variables('sites_tailwindtraders_website_eastus_apps50_name'), '.azurewebsites.net')]",
           "location": "East US",
           "dependsOn": [
-              "[resourceId('Microsoft.Web/sites', parameters('sites_tailwindtraders_website_eastus_apps50_name'))]"
+              "[resourceId('Microsoft.Web/sites', variables('sites_tailwindtraders_website_eastus_apps50_name'))]"
           ],
           "properties": {
               "siteName": "tailwindtraders-website-eastus-apps50",
