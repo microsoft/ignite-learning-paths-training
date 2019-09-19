@@ -1,0 +1,678 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "resourceNameSuffix":  {
+        "defaultValue": "deployment",
+        "type": "String"
+     },
+      "apiUrl":  {
+        "defaultValue": "{AKS_BACKEND_ENDPOINT}/webbff/v1",
+        "type": "String"
+     },
+      "apiUrlShoppingCart":  {
+        "defaultValue": "{AKS_BACKEND_ENDPOINT}/cart-api",
+        "type": "String"
+     }
+  },
+  "variables": {
+    "frontdoors_tailwind_apps50_name": "[concat('tailwind-apps50-',parameters('resourceNameSuffix'))]",
+    "sites_tailwindtraders_website_eastus_apps50_name": "[concat('tailwindtraders-website-eastus-apps50-',parameters('resourceNameSuffix'))]",
+    "sites_tailwindtraders_website_auseast_apps50_name": "[concat('tailwindtraders-website-auseast-apps50-',parameters('resourceNameSuffix'))]",
+    "components_tailwindtraders_appinsights_apps50_name": "[concat('tailwindtraders-appinsights-apps50-',parameters('resourceNameSuffix'))]",
+    "frontdoorwebapplicationfirewallpolicies_dontbemean_name": "[concat('dontbemean-',parameters('resourceNameSuffix'))]",
+    "serverfarms_tailwindtraders_website_eastus_apps50_plan_name": "[concat('tailwindtraders-website-eastus-apps50-plan-',parameters('resourceNameSuffix'))]",
+    "serverfarms_tailwindtraders_website_auseast_apps50_plan_name": "[concat('tailwindtraders-website-auseast-apps50-plan-',parameters('resourceNameSuffix'))]"
+  },
+  "resources": [
+      {
+          "type": "microsoft.insights/components",
+          "apiVersion": "2015-05-01",
+          "name": "[variables('components_tailwindtraders_appinsights_apps50_name')]",
+          "location": "eastus",
+          "kind": "web",
+          "properties": {
+              "Application_Type": "web",
+              "Flow_Type": "Redfield",
+              "Request_Source": "IbizaAIExtension"
+          }
+      },
+      {
+          "type": "Microsoft.Network/frontdoors",
+          "apiVersion": "2018-08-01",
+          "name": "[variables('frontdoors_tailwind_apps50_name')]",
+          "location": "Global",
+          "properties": {
+              "resourceState": "Enabled",
+              "backendPools": [
+                  {
+                      "id": "[concat(resourceId('Microsoft.Network/frontdoors', variables('frontdoors_tailwind_apps50_name')), '/BackendPools/storefront')]",
+                      "name": "storefront",
+                      "properties": {
+                          "backends": [
+                              {
+                                  "address": "[concat(variables('sites_tailwindtraders_website_auseast_apps50_name'), '.azurewebsites.net')]",
+                                  "httpPort": 80,
+                                  "httpsPort": 443,
+                                  "priority": 1,
+                                  "weight": 50,
+                                  "backendHostHeader": "[concat(variables('sites_tailwindtraders_website_auseast_apps50_name'), '.azurewebsites.net')]",
+                                  "enabledState": "Enabled"
+                              },
+                              {
+                                  "address": "[concat(variables('sites_tailwindtraders_website_eastus_apps50_name'), '.azurewebsites.net')]",
+                                  "httpPort": 80,
+                                  "httpsPort": 443,
+                                  "priority": 1,
+                                  "weight": 50,
+                                  "backendHostHeader": "[concat(variables('sites_tailwindtraders_website_eastus_apps50_name'), '.azurewebsites.net')]",
+                                  "enabledState": "Enabled"
+                              }
+                          ],
+                          "healthProbeSettings": {
+                              "id": "[concat(resourceId('Microsoft.Network/frontdoors', variables('frontdoors_tailwind_apps50_name')), '/HealthProbeSettings/healthProbeSettings-1567028054363')]"
+                          },
+                          "loadBalancingSettings": {
+                              "id": "[concat(resourceId('Microsoft.Network/frontdoors', variables('frontdoors_tailwind_apps50_name')), '/LoadBalancingSettings/loadBalancingSettings-1567028054363')]"
+                          },
+                          "resourceState": "Enabled"
+                      }
+                  }
+              ],
+              "healthProbeSettings": [
+                  {
+                      "id": "[concat(resourceId('Microsoft.Network/frontdoors', variables('frontdoors_tailwind_apps50_name')), '/HealthProbeSettings/healthProbeSettings-1567028054363')]",
+                      "name": "healthProbeSettings-1567028054363",
+                      "properties": {
+                          "intervalInSeconds": 5,
+                          "path": "/",
+                          "protocol": "Https",
+                          "resourceState": "Enabled"
+                      }
+                  }
+              ],
+              "frontendEndpoints": [
+                  {
+                      "id": "[concat(resourceId('Microsoft.Network/frontdoors', variables('frontdoors_tailwind_apps50_name')), concat('/FrontendEndpoints/', variables('frontdoors_tailwind_apps50_name'), '-azurefd-net'))]",
+                      "name": "[concat(variables('frontdoors_tailwind_apps50_name'), '-azurefd-net')]",
+                      "properties": {
+                          "hostName": "[concat(variables('frontdoors_tailwind_apps50_name'), '.azurefd.net')]",
+                          "sessionAffinityEnabledState": "Disabled",
+                          "sessionAffinityTtlSeconds": 0,
+                          "resourceState": "Enabled"
+                      }
+                  }
+              ],
+              "loadBalancingSettings": [
+                  {
+                      "id": "[concat(resourceId('Microsoft.Network/frontdoors', variables('frontdoors_tailwind_apps50_name')), '/LoadBalancingSettings/loadBalancingSettings-1567028054363')]",
+                      "name": "loadBalancingSettings-1567028054363",
+                      "properties": {
+                          "additionalLatencyMilliseconds": 0,
+                          "sampleSize": 4,
+                          "successfulSamplesRequired": 2,
+                          "resourceState": "Enabled"
+                      }
+                  }
+              ],
+              "routingRules": [
+                  {
+                      "id": "[concat(resourceId('Microsoft.Network/frontdoors', variables('frontdoors_tailwind_apps50_name')), '/RoutingRules/root')]",
+                      "name": "root",
+                      "properties": {
+                          "frontendEndpoints": [
+                              {
+                                  "id": "[concat(resourceId('Microsoft.Network/frontdoors', variables('frontdoors_tailwind_apps50_name')), concat('/FrontendEndpoints/', variables('frontdoors_tailwind_apps50_name'), '-azurefd-net'))]"
+                              }
+                          ],
+                          "acceptedProtocols": [
+                              "Http",
+                              "Https"
+                          ],
+                          "patternsToMatch": [
+                              "/",
+                              "/*"
+                          ],
+                          "forwardingProtocol": "HttpsOnly",
+                          "backendPool": {
+                              "id": "[concat(resourceId('Microsoft.Network/frontdoors', variables('frontdoors_tailwind_apps50_name')), '/BackendPools/storefront')]"
+                          },
+                          "enabledState": "Enabled",
+                          "resourceState": "Enabled"
+                      }
+                  }
+              ],
+              "enabledState": "Enabled",
+              "friendlyName": "[variables('frontdoors_tailwind_apps50_name')]"
+          }
+      },
+      {
+          "type": "Microsoft.Network/frontdoorwebapplicationfirewallpolicies",
+          "apiVersion": "2018-08-01",
+          "name": "[variables('frontdoorwebapplicationfirewallpolicies_dontbemean_name')]",
+          "location": "Global",
+          "properties": {
+              "policySettings": {
+                  "enabledState": "Enabled",
+                  "mode": "Detection"
+              },
+              "customRules": {
+                  "rules": []
+              },
+              "managedRules": {
+                  "ruleSets": []
+              }
+          }
+      },
+      {
+          "type": "Microsoft.Web/serverfarms",
+          "apiVersion": "2016-09-01",
+          "name": "[variables('serverfarms_tailwindtraders_website_auseast_apps50_plan_name')]",
+          "location": "Australia East",
+          "sku": {
+              "name": "P1v2",
+              "tier": "PremiumV2",
+              "size": "P1v2",
+              "family": "Pv2",
+              "capacity": 1
+          },
+          "kind": "app",
+          "properties": {
+              "name": "[variables('serverfarms_tailwindtraders_website_auseast_apps50_plan_name')]",
+              "perSiteScaling": false,
+              "reserved": false,
+              "targetWorkerCount": 0,
+              "targetWorkerSizeId": 0
+          }
+      },
+      {
+          "type": "Microsoft.Web/serverfarms",
+          "apiVersion": "2016-09-01",
+          "name": "[variables('serverfarms_tailwindtraders_website_eastus_apps50_plan_name')]",
+          "location": "East US",
+          "sku": {
+              "name": "P1v2",
+              "tier": "PremiumV2",
+              "size": "P1v2",
+              "family": "Pv2",
+              "capacity": 1
+          },
+          "kind": "app",
+          "properties": {
+              "name": "[variables('serverfarms_tailwindtraders_website_eastus_apps50_plan_name')]",
+              "perSiteScaling": false,
+              "reserved": false,
+              "targetWorkerCount": 0,
+              "targetWorkerSizeId": 0
+          }
+      },
+      {
+          "type": "Microsoft.Web/sites",
+          "apiVersion": "2016-08-01",
+          "name": "[variables('sites_tailwindtraders_website_auseast_apps50_name')]",
+          "location": "Australia East",
+          "dependsOn": [
+              "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_tailwindtraders_website_auseast_apps50_plan_name'))]"
+          ],
+          "kind": "app",
+          "resources": [
+            {
+              "apiVersion": "2015-08-01",
+              "name": "web",
+              "type": "sourcecontrols",
+              "dependsOn": [
+                "[resourceId('Microsoft.Web/Sites', variables('sites_tailwindtraders_website_auseast_apps50_name'))]"
+              ],
+              "properties": {
+                "RepoUrl": "https://github.com/microsoft/TailwindTraders-Website.git",
+                "branch": "master",
+                "IsManualIntegration": true
+              }
+            }
+          ],
+          "properties": {
+            "siteConfig": {
+              "appSettings": [
+                {
+                  "name": "DebugInformation__CustomText",
+                  "value": "Australia East"
+                },
+                {
+                  "name": "DebugInformation__ShowDebug",
+                  "value": "True"
+                },
+                {
+                  "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+                  "value": "[reference(concat('microsoft.insights/components/', variables('components_tailwindtraders_appinsights_apps50_name')), '2015-05-01').InstrumentationKey]"
+                },
+                {
+                  "name": "ApplicationInsightsAgent_EXTENSION_VERSION",
+                  "value": "~2"
+                },
+                {
+                  "name": "XDT_MicrosoftApplicationInsights_Mode",
+                  "value": "recommended"
+                },
+                {
+                  "name": "DiagnosticServices_EXTENSION_VERSION",
+                  "value": "~3"
+                },
+                {
+                  "name": "APPINSIGHTS_PROFILERFEATURE_VERSION",
+                  "value": "1.0.0"
+                },
+                {
+                  "name": "APPINSIGHTS_SNAPSHOTFEATURE_VERSION",
+                  "value": "1.0.0"
+                },
+                {
+                  "name": "InstrumentationEngine_EXTENSION_VERSION",
+                  "value": "~1"
+                },
+                {
+                  "name": "SnapshotDebugger_EXTENSION_VERSION",
+                  "value": "~1"
+                },
+                {
+                  "name": "XDT_MicrosoftApplicationInsights_BaseExtensions",
+                  "value": "~1"
+                },
+                {
+                  "name": "WEBSITE_NODE_DEFAULT_VERSION",
+                  "value": "10.15.2"
+                },
+                {
+                  "name": "ApiUrl",
+                  "value": "[parameters('apiUrl')]"
+                },
+                {
+                  "name": "ApiUrlShoppingCart",
+                  "value": "[parameters('apiUrlShoppingCart')]"
+                }
+              ]
+              },
+              "enabled": true,
+              "hostNameSslStates": [
+                  {
+                      "name": "[concat(variables('sites_tailwindtraders_website_auseast_apps50_name'), '.azurewebsites.net')]",
+                      "sslState": "Disabled",
+                      "hostType": "Standard"
+                  },
+                  {
+                      "name": "[concat(variables('sites_tailwindtraders_website_auseast_apps50_name'), '.scm.azurewebsites.net')]",
+                      "sslState": "Disabled",
+                      "hostType": "Repository"
+                  }
+              ],
+              "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_tailwindtraders_website_auseast_apps50_plan_name'))]",
+              "reserved": false,
+              "scmSiteAlsoStopped": false,
+              "clientAffinityEnabled": true,
+              "clientCertEnabled": false,
+              "hostNamesDisabled": false,
+              "containerSize": 0,
+              "dailyMemoryTimeQuota": 0,
+              "httpsOnly": false
+          }
+      },
+      {
+          "type": "Microsoft.Web/sites",
+          "apiVersion": "2016-08-01",
+          "name": "[variables('sites_tailwindtraders_website_eastus_apps50_name')]",
+          "location": "East US",
+          "dependsOn": [
+              "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_tailwindtraders_website_eastus_apps50_plan_name'))]"
+          ],
+          "kind": "app",
+          "resources": [
+            {
+              "apiVersion": "2015-08-01",
+              "name": "web",
+              "type": "sourcecontrols",
+              "dependsOn": [
+                "[resourceId('Microsoft.Web/Sites', variables('sites_tailwindtraders_website_eastus_apps50_name'))]"
+              ],
+              "properties": {
+                "RepoUrl": "https://github.com/microsoft/TailwindTraders-Website.git",
+                "branch": "master",
+                "IsManualIntegration": true
+              }
+            }
+          ],
+          "properties": {
+            "siteConfig": {
+              "appSettings": [
+                {
+                  "name": "DebugInformation__CustomText",
+                  "value": "East US"
+                },
+                {
+                  "name": "DebugInformation__ShowDebug",
+                  "value": "True"
+                },
+                {
+                  "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+                  "value": "[reference(concat('microsoft.insights/components/', variables('components_tailwindtraders_appinsights_apps50_name')), '2015-05-01').InstrumentationKey]"
+                },
+                {
+                  "name": "ApplicationInsightsAgent_EXTENSION_VERSION",
+                  "value": "~2"
+                },
+                {
+                  "name": "XDT_MicrosoftApplicationInsights_Mode",
+                  "value": "recommended"
+                },
+                {
+                  "name": "DiagnosticServices_EXTENSION_VERSION",
+                  "value": "~3"
+                },
+                {
+                  "name": "APPINSIGHTS_PROFILERFEATURE_VERSION",
+                  "value": "1.0.0"
+                },
+                {
+                  "name": "APPINSIGHTS_SNAPSHOTFEATURE_VERSION",
+                  "value": "1.0.0"
+                },
+                {
+                  "name": "InstrumentationEngine_EXTENSION_VERSION",
+                  "value": "~1"
+                },
+                {
+                  "name": "SnapshotDebugger_EXTENSION_VERSION",
+                  "value": "~1"
+                },
+                {
+                  "name": "XDT_MicrosoftApplicationInsights_BaseExtensions",
+                  "value": "~1"
+                },
+                {
+                  "name": "WEBSITE_NODE_DEFAULT_VERSION",
+                  "value": "10.15.2"
+                },
+                {
+                  "name": "ApiUrl",
+                  "value": "[parameters('apiUrl')]"
+                },
+                {
+                  "name": "ApiUrlShoppingCart",
+                  "value": "[parameters('apiUrlShoppingCart')]"
+                }
+              ]
+              },
+              "enabled": true,
+              "hostNameSslStates": [
+                  {
+                      "name": "[concat(variables('sites_tailwindtraders_website_eastus_apps50_name'), '.azurewebsites.net')]",
+                      "sslState": "Disabled",
+                      "hostType": "Standard"
+                  },
+                  {
+                      "name": "[concat(variables('sites_tailwindtraders_website_eastus_apps50_name'), '.scm.azurewebsites.net')]",
+                      "sslState": "Disabled",
+                      "hostType": "Repository"
+                  }
+              ],
+              "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('serverfarms_tailwindtraders_website_eastus_apps50_plan_name'))]",
+              "reserved": false,
+              "scmSiteAlsoStopped": false,
+              "clientAffinityEnabled": true,
+              "clientCertEnabled": false,
+              "hostNamesDisabled": false,
+              "containerSize": 0,
+              "dailyMemoryTimeQuota": 0,
+              "httpsOnly": false
+          }
+      },
+      {
+          "type": "Microsoft.Web/sites/config",
+          "apiVersion": "2016-08-01",
+          "name": "[concat(variables('sites_tailwindtraders_website_auseast_apps50_name'), '/web')]",
+          "location": "Australia East",
+          "dependsOn": [
+              "[resourceId('Microsoft.Web/sites', variables('sites_tailwindtraders_website_auseast_apps50_name'))]"
+          ],
+          "properties": {
+              "numberOfWorkers": 1,
+              "defaultDocuments": [
+                  "Default.htm",
+                  "Default.html",
+                  "Default.asp",
+                  "index.htm",
+                  "index.html",
+                  "iisstart.htm",
+                  "default.aspx",
+                  "index.php",
+                  "hostingstart.html"
+              ],
+              "netFrameworkVersion": "v4.0",
+              "phpVersion": "5.6",
+              "pythonVersion": "",
+              "nodeVersion": "",
+              "linuxFxVersion": "",
+              "requestTracingEnabled": false,
+              "remoteDebuggingEnabled": false,
+              "remoteDebuggingVersion": "VS2017",
+              "httpLoggingEnabled": false,
+              "logsDirectorySizeLimit": 35,
+              "detailedErrorLoggingEnabled": false,
+              "publishingUsername": "$tailwindtraders-website-auseast-apps50",
+              "scmType": "ExternalGit",
+              "use32BitWorkerProcess": true,
+              "webSocketsEnabled": false,
+              "alwaysOn": true,
+              "appCommandLine": "",
+              "managedPipelineMode": "Integrated",
+              "virtualApplications": [
+                  {
+                      "virtualPath": "/",
+                      "physicalPath": "site\\wwwroot",
+                      "preloadEnabled": true,
+                      "virtualDirectories": null
+                  }
+              ],
+              "winAuthAdminState": 0,
+              "winAuthTenantState": 0,
+              "customAppPoolIdentityAdminState": false,
+              "customAppPoolIdentityTenantState": false,
+              "loadBalancing": "LeastRequests",
+              "routingRules": [],
+              "experiments": {
+                  "rampUpRules": []
+              },
+              "autoHealEnabled": false,
+              "vnetName": "",
+              "siteAuthEnabled": false,
+              "siteAuthSettings": {
+                  "enabled": null,
+                  "unauthenticatedClientAction": null,
+                  "tokenStoreEnabled": null,
+                  "allowedExternalRedirectUrls": null,
+                  "defaultProvider": null,
+                  "clientId": null,
+                  "clientSecret": null,
+                  "clientSecretCertificateThumbprint": null,
+                  "issuer": null,
+                  "allowedAudiences": null,
+                  "additionalLoginParams": null,
+                  "isAadAutoProvisioned": false,
+                  "googleClientId": null,
+                  "googleClientSecret": null,
+                  "googleOAuthScopes": null,
+                  "facebookAppId": null,
+                  "facebookAppSecret": null,
+                  "facebookOAuthScopes": null,
+                  "twitterConsumerKey": null,
+                  "twitterConsumerSecret": null,
+                  "microsoftAccountClientId": null,
+                  "microsoftAccountClientSecret": null,
+                  "microsoftAccountOAuthScopes": null
+              },
+              "localMySqlEnabled": false,
+              "http20Enabled": false,
+              "minTlsVersion": "1.2",
+              "ftpsState": "AllAllowed",
+              "reservedInstanceCount": 0,
+              "fileChangeAuditEnabled": false
+          }
+      },
+      {
+          "type": "Microsoft.Web/sites/config",
+          "apiVersion": "2016-08-01",
+          "name": "[concat(variables('sites_tailwindtraders_website_eastus_apps50_name'), '/web')]",
+          "location": "East US",
+          "dependsOn": [
+              "[resourceId('Microsoft.Web/sites', variables('sites_tailwindtraders_website_eastus_apps50_name'))]"
+          ],
+          "properties": {
+              "numberOfWorkers": 1,
+              "defaultDocuments": [
+                  "Default.htm",
+                  "Default.html",
+                  "Default.asp",
+                  "index.htm",
+                  "index.html",
+                  "iisstart.htm",
+                  "default.aspx",
+                  "index.php",
+                  "hostingstart.html"
+              ],
+              "netFrameworkVersion": "v4.0",
+              "phpVersion": "5.6",
+              "pythonVersion": "",
+              "nodeVersion": "",
+              "linuxFxVersion": "",
+              "requestTracingEnabled": true,
+              "requestTracingExpirationTime": "9999-12-31T23:59:00Z",
+              "remoteDebuggingEnabled": false,
+              "remoteDebuggingVersion": "VS2017",
+              "httpLoggingEnabled": true,
+              "logsDirectorySizeLimit": 35,
+              "detailedErrorLoggingEnabled": true,
+              "publishingUsername": "$tailwindtraders-website-eastus-apps50",
+              "scmType": "ExternalGit",
+              "use32BitWorkerProcess": true,
+              "webSocketsEnabled": false,
+              "alwaysOn": true,
+              "appCommandLine": "",
+              "managedPipelineMode": "Integrated",
+              "virtualApplications": [
+                  {
+                      "virtualPath": "/",
+                      "physicalPath": "site\\wwwroot",
+                      "preloadEnabled": true,
+                      "virtualDirectories": null
+                  }
+              ],
+              "winAuthAdminState": 0,
+              "winAuthTenantState": 0,
+              "customAppPoolIdentityAdminState": false,
+              "customAppPoolIdentityTenantState": false,
+              "loadBalancing": "LeastRequests",
+              "routingRules": [],
+              "experiments": {
+                  "rampUpRules": []
+              },
+              "autoHealEnabled": false,
+              "vnetName": "",
+              "siteAuthEnabled": false,
+              "siteAuthSettings": {
+                  "enabled": null,
+                  "unauthenticatedClientAction": null,
+                  "tokenStoreEnabled": null,
+                  "allowedExternalRedirectUrls": null,
+                  "defaultProvider": null,
+                  "clientId": null,
+                  "clientSecret": null,
+                  "clientSecretCertificateThumbprint": null,
+                  "issuer": null,
+                  "allowedAudiences": null,
+                  "additionalLoginParams": null,
+                  "isAadAutoProvisioned": false,
+                  "googleClientId": null,
+                  "googleClientSecret": null,
+                  "googleOAuthScopes": null,
+                  "facebookAppId": null,
+                  "facebookAppSecret": null,
+                  "facebookOAuthScopes": null,
+                  "twitterConsumerKey": null,
+                  "twitterConsumerSecret": null,
+                  "microsoftAccountClientId": null,
+                  "microsoftAccountClientSecret": null,
+                  "microsoftAccountOAuthScopes": null
+              },
+              "localMySqlEnabled": false,
+              "http20Enabled": false,
+              "minTlsVersion": "1.2",
+              "ftpsState": "AllAllowed",
+              "reservedInstanceCount": 0,
+              "fileChangeAuditEnabled": false
+          }
+      },
+      {
+          "type": "Microsoft.Web/sites/deployments",
+          "apiVersion": "2016-08-01",
+          "name": "[concat(variables('sites_tailwindtraders_website_auseast_apps50_name'), '/d998e901c2526217ba0999a9f37e0c829f7c6cfe')]",
+          "location": "Australia East",
+          "dependsOn": [
+              "[resourceId('Microsoft.Web/sites', variables('sites_tailwindtraders_website_auseast_apps50_name'))]"
+          ],
+          "properties": {
+              "id": "d998e901c2526217ba0999a9f37e0c829f7c6cfe",
+              "status": 3,
+              "author_email": "david.sanchez@microsoft.com",
+              "author": "David Sanchez (MSFT)",
+              "deployer": "GitHub",
+              "message": "Merge pull request #38 from cdemiguel/master\n\nUpdate Website",
+              "start_time": "2019-09-18T22:12:58.6904418Z",
+              "end_time": "2019-09-18T22:23:48.6870404Z",
+              "active": true
+          }
+      },
+      {
+          "type": "Microsoft.Web/sites/deployments",
+          "apiVersion": "2016-08-01",
+          "name": "[concat(variables('sites_tailwindtraders_website_eastus_apps50_name'), '/d998e901c2526217ba0999a9f37e0c829f7c6cfe')]",
+          "location": "East US",
+          "dependsOn": [
+              "[resourceId('Microsoft.Web/sites', variables('sites_tailwindtraders_website_eastus_apps50_name'))]"
+          ],
+          "properties": {
+              "id": "d998e901c2526217ba0999a9f37e0c829f7c6cfe",
+              "status": 1,
+              "author_email": "david.sanchez@microsoft.com",
+              "author": "David Sanchez (MSFT)",
+              "deployer": "GitHub",
+              "message": "Merge pull request #38 from cdemiguel/master\n\nUpdate Website",
+              "start_time": "2019-09-18T22:16:47.4804722Z",
+              "active": true
+          }
+      },
+      {
+          "type": "Microsoft.Web/sites/hostNameBindings",
+          "apiVersion": "2016-08-01",
+          "name": "[concat(variables('sites_tailwindtraders_website_auseast_apps50_name'), '/', variables('sites_tailwindtraders_website_auseast_apps50_name'), '.azurewebsites.net')]",
+          "location": "Australia East",
+          "dependsOn": [
+              "[resourceId('Microsoft.Web/sites', variables('sites_tailwindtraders_website_auseast_apps50_name'))]"
+          ],
+          "properties": {
+              "siteName": "tailwindtraders-website-auseast-apps50",
+              "hostNameType": "Verified"
+          }
+      },
+      {
+          "type": "Microsoft.Web/sites/hostNameBindings",
+          "apiVersion": "2016-08-01",
+          "name": "[concat(variables('sites_tailwindtraders_website_eastus_apps50_name'), '/', variables('sites_tailwindtraders_website_eastus_apps50_name'), '.azurewebsites.net')]",
+          "location": "East US",
+          "dependsOn": [
+              "[resourceId('Microsoft.Web/sites', variables('sites_tailwindtraders_website_eastus_apps50_name'))]"
+          ],
+          "properties": {
+              "siteName": "tailwindtraders-website-eastus-apps50",
+              "hostNameType": "Verified"
+          }
+      }
+  ]
+}
