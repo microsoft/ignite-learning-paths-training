@@ -1,5 +1,9 @@
 # Taking Your App to the Next Level with Monitoring, Performance and Scaling
 
+## Deployment
+
+[![Deploy to Azure](https://azuredeploy.net/deploybutton.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Ftoolboc%2Fignite-learning-paths-training%2Fapps50deployment%2Fapps%2Fapps50%2Fdeploy%2Fdeployment.json)
+
 ## Demos
 
 To reset the demo, please refer to the [reset instructions](./demo-scripts/demo-reset.md).
