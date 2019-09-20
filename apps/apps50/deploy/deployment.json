@@ -20,7 +20,7 @@
     "sites_tailwindtraders_website_eastus_apps50_name": "[concat('tailwindtraders-website-eastus-apps50-',parameters('resourceNameSuffix'))]",
     "sites_tailwindtraders_website_auseast_apps50_name": "[concat('tailwindtraders-website-auseast-apps50-',parameters('resourceNameSuffix'))]",
     "components_tailwindtraders_appinsights_apps50_name": "[concat('tailwindtraders-appinsights-apps50-',parameters('resourceNameSuffix'))]",
-    "frontdoorwebapplicationfirewallpolicies_dontbemean_name": "[concat('dontbemean-',parameters('resourceNameSuffix'))]",
+    "frontdoorwebapplicationfirewallpolicies_dontbemean_name": "[concat('dontbemean',parameters('resourceNameSuffix'))]",
     "serverfarms_tailwindtraders_website_eastus_apps50_plan_name": "[concat('tailwindtraders-website-eastus-apps50-plan-',parameters('resourceNameSuffix'))]",
     "serverfarms_tailwindtraders_website_auseast_apps50_plan_name": "[concat('tailwindtraders-website-auseast-apps50-plan-',parameters('resourceNameSuffix'))]"
   },
