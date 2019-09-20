@@ -610,45 +610,6 @@
           }
       },
       {
-          "type": "Microsoft.Web/sites/deployments",
-          "apiVersion": "2016-08-01",
-          "name": "[concat(variables('sites_tailwindtraders_website_auseast_apps50_name'), '/d998e901c2526217ba0999a9f37e0c829f7c6cfe')]",
-          "location": "Australia East",
-          "dependsOn": [
-              "[resourceId('Microsoft.Web/sites', variables('sites_tailwindtraders_website_auseast_apps50_name'))]"
-          ],
-          "properties": {
-              "id": "d998e901c2526217ba0999a9f37e0c829f7c6cfe",
-              "status": 3,
-              "author_email": "david.sanchez@microsoft.com",
-              "author": "David Sanchez (MSFT)",
-              "deployer": "GitHub",
-              "message": "Merge pull request #38 from cdemiguel/master\n\nUpdate Website",
-              "start_time": "2019-09-18T22:12:58.6904418Z",
-              "end_time": "2019-09-18T22:23:48.6870404Z",
-              "active": true
-          }
-      },
-      {
-          "type": "Microsoft.Web/sites/deployments",
-          "apiVersion": "2016-08-01",
-          "name": "[concat(variables('sites_tailwindtraders_website_eastus_apps50_name'), '/d998e901c2526217ba0999a9f37e0c829f7c6cfe')]",
-          "location": "East US",
-          "dependsOn": [
-              "[resourceId('Microsoft.Web/sites', variables('sites_tailwindtraders_website_eastus_apps50_name'))]"
-          ],
-          "properties": {
-              "id": "d998e901c2526217ba0999a9f37e0c829f7c6cfe",
-              "status": 1,
-              "author_email": "david.sanchez@microsoft.com",
-              "author": "David Sanchez (MSFT)",
-              "deployer": "GitHub",
-              "message": "Merge pull request #38 from cdemiguel/master\n\nUpdate Website",
-              "start_time": "2019-09-18T22:16:47.4804722Z",
-              "active": true
-          }
-      },
-      {
           "type": "Microsoft.Web/sites/hostNameBindings",
           "apiVersion": "2016-08-01",
           "name": "[concat(variables('sites_tailwindtraders_website_auseast_apps50_name'), '/', variables('sites_tailwindtraders_website_auseast_apps50_name'), '.azurewebsites.net')]",
