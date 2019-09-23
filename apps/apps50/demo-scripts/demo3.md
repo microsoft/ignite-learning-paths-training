@@ -22,7 +22,7 @@
 * Go to the AppService exhibiting the issue (Australia East/EastUS)
 * Go to `Settings > Configuration`
 * Show value of `ApiUrl` and `ApiUrlShoppingCart`.
-* Mention that `ApiUrl` is basically missing the host. Copy host from `ApiUrlShoppingCart` to fix the issue. **Save** and restart the App Service instance
-* Go back to the failing website. Force refresh the page. Navigate back to the PowerTools section.
+* Mention that `ApiUrl` and `ApiUrlShoppingCart` are basically missing the proper host.  Replace the "http://AKS_BACKEND_ENDPOINT" portion of both `ApiUrl` and `ApiUrlShoppingCart` using the value from `AKS_BACKEND_ENDPOINT` in variables.txt to fix the issue. **Save** and restart the App Service instance
+* Go back to the failing website. Force refresh the page. Navigate back to the PowerTools section. 
 * Everything should work
 * Summarize what we have just done.
