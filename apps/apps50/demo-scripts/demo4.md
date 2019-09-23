@@ -12,7 +12,7 @@
 > We could jump into our Kubernetes cluster directly using `kubectl` but that would require everyone to have access admin access to the cluster.
 > Now let's see how we could monitor such failures directly from Azure Monitor.
 
-* Head to Kubernetes Service located in our backend resource group `pdecarlo-apps50-backend`.
+* Head to Kubernetes Service located in our backend resource group `AKS_RESOURCE_GROUP` from variables.txt.
 * Mention we already activated Azure Monitor for AKS. Click on `Monitor containers` on the Overview tab.
 * Discuss about what we see (health of our nodes, node count, active pods, etc.)
 * Mention the active pods blip in the `Active Pods` graph
@@ -30,7 +30,7 @@
 * Go to our `Config and Storage > Config Maps` since this is where container configurations are stored.
 * Click on `cfg-my-tt-cart-cart-api`. Mention that the host section is blank.
 * Click on `EDIT`
-* Set the `HOST` value to `https://ttshoppingdb56ime2uif7zxk.documents.azure.com:443/`
+* Set the `HOST` value to the value of `HOST` from variables.txt
   - This is the host for the COSMOS DB
 * To restart, go to `Workloads > Pods` and delete the cart-api pod. K8S will restart the container.
 * Head back to Application and test out `Add to cart`.

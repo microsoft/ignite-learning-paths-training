@@ -1,7 +1,7 @@
 # Slide 25 - Finding and Fixing Failures with Failure Analysis in Application Insights
 
 * Remind users of what happened in the first demo `Identifying the issue`.
-* Compare both endpoints [EastUS](http://tailwindtraders-website-eastus-apps50.azurewebsites.net) / [Australia East](http://tailwindtraders-website-auseast-apps50.azurewebsites.net)
+* Compare both endpoints [EastUS](http://tailwindtraders-website-eastus-apps50-*.azurewebsites.net) / [Australia East](http://tailwindtraders-website-auseast-apps50-*.azurewebsites.net)
   - For each, click on Powertools category
 * For the failing endpoint, open the F12 tools in a Chromium-based browser and go to the `Network` tab and hit F5 again.
 * Bring attention to `?&type=diytools` request that hits `http://webbff/v1/products?&type=diytools`. 
@@ -14,15 +14,15 @@
 * Notice all the failed requests around `webbff`
 * Click **on the number** of the first line in the top 10 response. Mention the suggested query to debug.
 * Click the suggested query to debug
-* Click on the line where `?&type=diytools` fails. Talk about the elements on the right. Especially the url with a  `http:///`. 
+* Click on the line where `?&type=diytools` fails. Talk about the elements on the right. Especially the url with a  `http://AKS_BACKEND_ENDPOINT/*`. 
 
-> Triple slash isn't a thing. Might be a configuration issue.
+> Note how this looks like it might be a configuration issue.
 
-* Go back to Resource Group `pdecarlo-apps50-frontend`
+* Go back to Resource Group `FRONTEND_RESOURCE_GROUP` from variables.txt
 * Go to the AppService exhibiting the issue (Australia East/EastUS)
 * Go to `Settings > Configuration`
 * Show value of `ApiUrl` and `ApiUrlShoppingCart`.
-* Mention that `ApiUrl` is basically missing the host. Copy host from `ApiUrlShoppingCart` to fix the issue. **Save**
+* Mention that `ApiUrl` is basically missing the host. Copy host from `ApiUrlShoppingCart` to fix the issue. **Save** and restart the App Service instance
 * Go back to the failing website. Force refresh the page. Navigate back to the PowerTools section.
 * Everything should work
-* Summarize what we just done.
+* Summarize what we have just done.
