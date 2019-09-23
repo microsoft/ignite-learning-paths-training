@@ -2,7 +2,7 @@
 
 ## Deployment
 
-Along the way, you will be asked to store a number of variables to make it easier to follow along with the demo scripts.  Before starting out, create a text file name variables.txt and pre-fill it with the following:
+Along the way, you will be asked to store a number of variables to make it easier to follow along with the demo scripts.  Before starting out, create a text file named variables.txt and pre-fill it with the following:
 
 ```
 AKS_BACKEND_ENDPOINT=
