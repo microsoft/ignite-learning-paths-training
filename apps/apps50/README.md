@@ -81,6 +81,7 @@ Next, you will need to deploy the Apps50 specific frontend resources provided by
 [![Deploy to Azure](https://azuredeploy.net/deploybutton.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2Fignite-learning-paths-training%2Fmaster%2Fapps%2Fapps50%2Fdeploy%2Fdeployment.json)
 
 After selecting the subscription, resource group, and location or deployment, you will need to provide a unique value for the following setting:
+
 ![](./assets/settings.png)
 
 `Resource Name Suffix` is a value that is appended to the end of all created resources, ex: if you were to put "deployment" here, it would create the following resources:
