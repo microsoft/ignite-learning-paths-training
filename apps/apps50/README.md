@@ -2,9 +2,20 @@
 
 ## Deployment
 
-First you will need to [deploy the Tailwind Traders Reference Deployment to an AKS instance](https://github.com/neilpeterson/tailwind-reference-deployment#tailwind-traders-aks).  Be sure to select the "Deploy to Azure" button that is under the "Tailwind Traders AKS" heading.  Follow the instructions in the README of the above linked repo to obtain the url of the newly deployed Tailwind Traders website.  We will refer to this value later on as `AKS_BACKEND_ENDPOINT`, please store this value in a file where it can be retrieved later.
+Along the way, you will be asked to store a number of variables to make it easier to follow along with the demo scripts.  Before starting out, create a text file name variables.txt and pre-fill it with the following:
 
-You should end up with the following deployed resources, take note of the Azure Kubernetes Service name and the resource group that it was deployed to as we will use those values in steps that follow.  Store these values in a file where they can be retrived later as `AKS_NAME` and `AKS_RESOURCE_GROUP` respectively:
+```
+AKS_BACKEND_ENDPOINT=
+AKS_NAME=
+AKS_RESOURCE_GROUP=
+AZURE_FD_ENDPOINT=
+```
+
+As we progress through the Deployment steps, we will update this list with appropriate values to be used later in the demo scripts.
+
+First you will need to [deploy the Tailwind Traders Reference Deployment to an AKS instance](https://github.com/neilpeterson/tailwind-reference-deployment#tailwind-traders-aks).  Be sure to select the "Deploy to Azure" button that is under the "Tailwind Traders AKS" heading.  Follow the instructions in the README of the above linked repo to obtain the url of the newly deployed Tailwind Traders website.  We will refer to this value later on as `AKS_BACKEND_ENDPOINT`, please store this value in your variables.txt file where it can be retrieved later.
+
+You should end up with the following deployed resources, take note of the Azure Kubernetes Service name and the resource group that it was deployed to as we will use those values in steps that follow.  Store these values in your variables.txt where they can be retrived later as `AKS_NAME` and `AKS_RESOURCE_GROUP` respectively:
 
 ![](./assets/backend.png)
 
@@ -62,7 +73,7 @@ Connect to the now accessible Kuberenetes dashboard with (be sure to replace the
 az aks browse --name AKS_NAME --resource-group AKS_RESOURCE_GROUP
 ```
 
-Select "Config and Storage" => "Config Maps" => "cfg-my-tt-cart", select "Edit" and copy the value for `HOST` to a file that can be retrieved later, we will refer to this value as `HOST` in the Demo 4 script. Finally, edit out this value so that there is nothing there as shown below and select "Update":
+Select "Config and Storage" => "Config Maps" => "cfg-my-tt-cart", select "Edit" and copy the value for `HOST` to your variables.txt file so that it can be retrieved later, we will refer to this value as `HOST` in the Demo 4 script. Finally, edit out this value so that there is nothing there as shown below and select "Update":
 
 ![](./assets/breakcart.png)
 
@@ -88,6 +99,11 @@ After selecting the subscription, resource group, and location or deployment, yo
 
 ![](./assets/resources.png)
 
+An azure front door instance will be deployed to the url:
+"http://tailwind-apps50-" + `Resource Name Suffix` + ".azurefd.net"
+
+Store the full value of this url to your variables.txt file as the value for `AZURE_FD_ENDPOINT`
+
 The deployment can take up to 20 minutes to complete.  When it is finished you should see a set of resources similar to the picture above deployed into the resource group that you selected.
 
 This deployment will purposely deploy a "broken" App Service instance of the Tailwind-Traders Frontend to East US and Australia East which we will fix in Demos 2 & 3.  
@@ -100,6 +116,7 @@ Before proceeding to the demos, ensure that you have a file which contains the f
 | AKS_NAME   | The name of the AKS service deployed | Required for Demo 4 |
 | AKS_RESOURCE_GROUP   | The name of the resource group that the AKS service is deployed to | Required for Demo 4|
 | HOST   | The CosmosDB Endpoint used by AKS for the my-tt-cart service | Required for Demo 4 |
+| AZURE_FD_ENDPOINT      | The http endpoint to the Azure front door service  | Required for Demos 1,5 |
 
 
 ## Demos
