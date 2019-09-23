@@ -2,21 +2,104 @@
 
 ## Deployment
 
-First you will need to [deploy the Tailwind Traders Reference Deployment to an AKS instance](https://github.com/neilpeterson/tailwind-reference-deployment#tailwind-traders-aks).  Be sure to select the "Deploy to Azure" button that is under the "Tailwind Traders AKS" heading.  Follow the instructions in the README of the above linked repo to obtain the url of the newly deployed Tailwind Traders website.  We will refer to this value later on as `{AKS_BACKEND_ENDPOINT}`, please store this value in a file where it can be retrieved later.
+First you will need to [deploy the Tailwind Traders Reference Deployment to an AKS instance](https://github.com/neilpeterson/tailwind-reference-deployment#tailwind-traders-aks).  Be sure to select the "Deploy to Azure" button that is under the "Tailwind Traders AKS" heading.  Follow the instructions in the README of the above linked repo to obtain the url of the newly deployed Tailwind Traders website.  We will refer to this value later on as `AKS_BACKEND_ENDPOINT`, please store this value in a file where it can be retrieved later.
 
-Next, you will need to deploy the Apps50 specific resources provided by the "Deploy to Azure" button below:
+You should end up with the following deployed resources, take note of the Azure Kubernetes Service name and the resource group that it was deployed to as we will use those values in steps that follow.  Store these values in a file where they can be retrived later as `AKS_NAME` and `AKS_RESOURCE_GROUP` respectively:
+
+![](./assets/backend.png)
+
+Demo 4 involves fixing an issue within Azure Kubernetes Services, we need to manually create the issue by performing the steps below.
+
+Ensure that you have installed the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) on your machine.
+
+Login to the azure subscription which contains the deployed resources with:
+
+```
+az login
+```
+
+Retrieve your active accounts with:
+```
+az account list
+```
+
+Set the appropriate account (be sure to replace the entirety of `Subscription_Id` with the value of the subscription id containing your deployed AKS instance):
+```
+az account set --subscription Subscription_Id
+```
+
+Now we will attempt to access our AKS instance through the kubernetes dashboard using (be sure to replace the entirety of `AKS_NAME` and `AKS_RESOURCE_GROUP` with the appropriate values):
+
+```
+az aks browse --name AKS_NAME --resource-group AKS_RESOURCE_GROUP
+```
+
+The dashboard will attempt to load but you should be met with permissions issues, this is by design.
+
+![](./assets/k8spermissions.png)
+
+Next, install kubectl and follow the instructions to make the program accessible to your `PATH` with:
+
+```
+az aks install-cli
+```
+
+Obtain the credentials to connect to your AKS instance with (be sure to replace the entirety of `AKS_NAME` and `AKS_RESOURCE_GROUP` with the appropriate values):
+
+```
+az aks get-credentials --name AKS_NAME --resource-group AKS_RESOURCE_GROUP
+```
+
+Enable access to all services in the Kubernetes dashboard with:
+
+```
+kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
+```
+
+Connect to the now accessible Kuberenetes dashboard with (be sure to replace the entirety of `AKS_NAME` and `AKS_RESOURCE_GROUP` with the appropriate values):
+
+```
+az aks browse --name AKS_NAME --resource-group AKS_RESOURCE_GROUP
+```
+
+Select "Config and Storage" => "Config Maps" => "cfg-my-tt-cart", select "Edit" and copy the value for `HOST` to a file that can be retrieved later, we will refer to this value as `HOST` in the Demo 4 script. Finally, edit out this value so that there is nothing there as shown below and select "Update":
+
+![](./assets/breakcart.png)
+
+Now we just need to restart the my-tt-cart deployment with:
+```
+kubectl scale --replicas=0 deployment my-tt-cart
+kubectl scale --replicas=1 deployment my-tt-cart
+```
+
+You should be able to verify that the cart service is broken in the dashboard (don't worry, we will fix it as part of demo 4)
+
+![](./assets/cartbroken.png)
+
+Next, you will need to deploy the Apps50 specific frontend resources provided by the "Deploy to Azure" button below:
+
 [![Deploy to Azure](https://azuredeploy.net/deploybutton.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmicrosoft%2Fignite-learning-paths-training%2Fmaster%2Fapps%2Fapps50%2Fdeploy%2Fdeployment.json)
 
-You will need to provide values for the following three parameters:
+After selecting the subscription, resource group, and location or deployment, you will need to provide a unique value for the following setting:
 ![](./assets/settings.png)
 
 `Resource Name Suffix` is a value that is appended to the end of all created resources, ex: if you were to put "deployment" here, it would create the following resources:
 
 ![](./assets/resources.png)
 
-You will also need to update the `{AKS_BACKEND_ENDPOINT}` portion of `Api Url` and `Api Url Shopping Cart` with the value obtained when deploying the Tailwind Traders Reference Deployment to an AKS instance.
-
 The deployment can take up to 20 minutes to complete.  When it is finished you should see a set of resources similar to the picture above deployed into the resource group that you selected.
+
+This deployment will purposely deploy a "broken" App Service instance of the Tailwind-Traders Frontend to East US and Australia East which we will fix in Demos 2 & 3.  
+
+Before proceeding to the demos, ensure that you have a file which contains the following variables:
+
+| Variable      | Description |           |
+| -------------- | ------------| --------- |
+| AKS_BACKEND_ENDPOINT      | The http endpoint to the backend AKS Services  | Required for Demos 2,3,4 |
+| AKS_NAME   | The name of the AKS service deployed | Required for Demo 4 |
+| AKS_RESOURCE_GROUP   | The name of the resource group that the AKS service is deployed to | Required for Demo 4|
+| HOST   | The CosmosDB Endpoint used by AKS for the my-tt-cart service | Required for Demo 4 |
+
 
 ## Demos
 
