@@ -2,7 +2,9 @@
 
 ## Deployment
 
-Along the way, you will be asked to store a number of variables to make it easier to follow along with the demo scripts.  Before starting out, create a text file named variables.txt and pre-fill it with the following:
+Please be aware that a special environment is required in order to successfully replicate the demos.  The deployment of this environment can take upwards of an hour on the first time through.  Keep this in mind as we want to ensure that you have adequate time before your presentation to familiarize with this process.
+
+To begin, create a text file on your machine named "variables.txt" and pre-fill it with the following:
 
 ```
 AKS_BACKEND_ENDPOINT=
@@ -15,7 +17,7 @@ EAST_US_SITE=
 AZURE_FD_ENDPOINT=
 ```
 
-As we progress through the Deployment steps, we will update this list with appropriate values to be used later in the demo scripts.
+As we progress through the Deployment steps, you will be asked to update values for these variables. This will make it easy to follow along with the demo scripts later on.
 
 First you will need to [deploy the Tailwind Traders Reference Deployment to an AKS instance](https://github.com/neilpeterson/tailwind-reference-deployment#tailwind-traders-aks).  Be sure to select the "Deploy to Azure" button that is under the "Tailwind Traders AKS" heading.  Follow the instructions in the README of the above linked repo to obtain the url of the newly deployed Tailwind Traders website.  We will refer to this value later on as `AKS_BACKEND_ENDPOINT`, please store this value in your variables.txt file where it can be retrieved later.
 
