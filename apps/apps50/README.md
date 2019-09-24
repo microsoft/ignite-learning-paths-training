@@ -19,7 +19,7 @@ AZURE_FD_ENDPOINT=
 
 As we progress through the Deployment steps, you will be asked to update values for these variables. This will make it easy to follow along with the demo scripts later on.
 
-First you will need to [deploy the Tailwind Traders Reference Deployment to an AKS instance](https://github.com/neilpeterson/tailwind-reference-deployment#tailwind-traders-aks).  Be sure to select the "Deploy to Azure" button that is under the "Tailwind Traders AKS" heading.  Follow the instructions in the README of the above linked repo to obtain the url of the newly deployed Tailwind Traders website.  We will refer to this value later on as `AKS_BACKEND_ENDPOINT`, please store this value in your variables.txt file where it can be retrieved later.
+First you will need to [deploy the Tailwind Traders Reference Deployment to an AKS instance](https://github.com/neilpeterson/tailwind-reference-deployment#tailwind-traders-aks).  Be sure to select the "Deploy to Azure" button that is under the "Tailwind Traders AKS" heading and deploy into the East US region (It is very important that you deploy into the East US region).  Follow the instructions in the README of the above linked repo to obtain the url of the newly deployed Tailwind Traders website.  We will refer to this value later on as `AKS_BACKEND_ENDPOINT`, please store this value in your variables.txt file where it can be retrieved later.
 
 You should end up with the following deployed resources, take note of the resource group that the backend was deployed to and the Azure Kubernetes Service name, we will use those values in steps that follow.  Store these values in your variables.txt where they can be retrieved later as `AKS_RESOURCE_GROUP` and `AKS_NAME`  respectively:
 
