@@ -28,7 +28,7 @@
 * Go through the list of all analytics. Mention the line where `Local environment detected`
 * Go to our AKS cluster by the `az aks browse` command.
 * Go to our `Config and Storage > Config Maps` since this is where container configurations are stored.
-* Click on `cfg-my-tt-cart-cart-api`. Mention that the host section is blank.
+* Click on `cfg-my-tt-cart`. Mention that the host section is blank.
 * Click on `EDIT`
 * Set the `HOST` value to the value of `HOST` from variables.txt
   - This is the host for the COSMOS DB
