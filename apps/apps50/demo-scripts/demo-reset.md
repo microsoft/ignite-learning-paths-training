@@ -2,20 +2,21 @@
 
 ## Front-End
 
-* We're working with the Resource Group `pdecarlo-apps50-frontend`.
+* We're working with the Resource Group `FRONTEND_RESOURCE_GROUP` from variables.txt.
 * Ensure all AppService in that group are started
-* Ensure that Azure Front Door backend pools points to `tailwindtraders-website-auseast-apps50` and `tailwindtraders-website-eastus-apps50`.
-* When you go to [http://tailwind-apps50.azurefd.net](http://tailwind-apps50.azurefd.net), note the name of the region in the header (Australia East/East US).
-
-  - If `East US`, use the `tailwindtraders-website-eastus-apps50` AppService.
-  - If `Australia East`, use the `tailwindtraders-website-auseast-apps50` AppService
-
-  - For the AppService that display on Azure Front Door
-    * Go to Configuration, ensure that `ApiUrl` is set to `http:///webbff/v1`
-    * For the other AppService, ensure that `ApiUrl` is set to `http://ebc0eece880b482d91a7.eastus.aksapp.io/webbff/v1`
-* Make sure you have `az aks browse -g pdecarlo-apps50-backend -n tailwindtradersaks56ime2uif7zxk` running in a console. If it's not running, make sure it's in the history for easy access.
-* Set the `Config Maps` for `cfg-my-tt-cart-cart-api`. Ensure `HOST` is empty.
+* Ensure that the `AZURE_FD_ENDPOINT` backend pools point to `AUSTRALIA_EAST_SITE` and `EAST_US_SITE `.
+* For `AUSTRALIA_EAST_SITE` and `EAST_US_SITE `
+    * Go to Configuration, ensure that `ApiUrl` is set to `http://AKS_BACKEND_ENDPOINT/webbff/v1`
+    * Go to Configuration, ensure that `ApiUrlShoppingCart` is set to `http://AKS_BACKEND_ENDPOINT/cart-api`
 
 ## Back-end
+* Run `az aks browse --resource-group AKS_RESOURCE_GROUP --name AKS_NAME` in a console using values from variables.txt. 
+* Set the `Config Maps` for `cfg-my-tt-cart-cart-api`. Ensure `HOST` is empty.
+![](../assets/breakcart.png)
+*  Restart the my-tt-cart deployment with:
+```
+kubectl scale --replicas=0 deployment my-tt-cart
+kubectl scale --replicas=1 deployment my-tt-cart
+```
 
 TODO
