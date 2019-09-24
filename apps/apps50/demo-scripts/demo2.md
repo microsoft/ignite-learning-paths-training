@@ -35,14 +35,14 @@
 > Since our application is a .NET Core application, we can also configure this part of the application easily by going directly into the Azure Portal.
 
 * Go to the Azure Portal [https://portal.azure.com/?feature.customportal=false](https://portal.azure.com/?feature.customportal=false)
-* Open the Resource Group `pdecarlo-apps50-frontend`
-* Open the Australia East Front-end `tailwindtraders-website-auseast-apps50`
+* Open the Resource Group `FRONTEND_RESOURCE_GROUP` from variables.txt
+* Open the Australia East Front-end `tailwindtraders-website-auseast-apps50-*`
 * Open Application Insights from overview window. Note that you can also open it from the left blade under `Settings`
 * Application Insights should already be configured. Talk about what we can track and how it doesn't require any kind of boilerplate code.
   - What is being tracked is in a list under `Instrument your application > .NET`
 * Talk about how the only thing that needs to be done is to flick the switch to enable
 * Bring attention to the language choices and the documentation links on how to enable them
-* Open back the `tailwindtraders-appinsights-apps50` resource on the overview tab.
+* Open back the `tailwindtraders-appinsights-apps50-*` resource on the overview tab.
 
 > Once everything is enabled, telemetry starts to get collected and that opens scenarios that allow us to better understand our application.
 

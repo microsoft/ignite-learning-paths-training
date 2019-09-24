@@ -5,17 +5,11 @@
     "resourceNameSuffix":  {
         "defaultValue": "deployment",
         "type": "String"
-     },
-      "apiUrl":  {
-        "defaultValue": "{AKS_BACKEND_ENDPOINT}/webbff/v1",
-        "type": "String"
-     },
-      "apiUrlShoppingCart":  {
-        "defaultValue": "{AKS_BACKEND_ENDPOINT}/cart-api",
-        "type": "String"
      }
   },
   "variables": {
+    "apiUrl":"http://AKS_BACKEND_ENDPOINT/webbff/v1",
+    "apiUrlShoppingCart":"http://AKS_BACKEND_ENDPOINT/cart-api",
     "frontdoors_tailwind_apps50_name": "[concat('tailwind-apps50-',parameters('resourceNameSuffix'))]",
     "sites_tailwindtraders_website_eastus_apps50_name": "[concat('tailwindtraders-website-eastus-apps50-',parameters('resourceNameSuffix'))]",
     "sites_tailwindtraders_website_auseast_apps50_name": "[concat('tailwindtraders-website-auseast-apps50-',parameters('resourceNameSuffix'))]",
@@ -283,11 +277,11 @@
                 },
                 {
                   "name": "ApiUrl",
-                  "value": "[parameters('apiUrl')]"
+                  "value": "[variables('apiUrl')]"
                 },
                 {
                   "name": "ApiUrlShoppingCart",
-                  "value": "[parameters('apiUrlShoppingCart')]"
+                  "value": "[variables('apiUrlShoppingCart')]"
                 }
               ]
               },
@@ -392,11 +386,11 @@
                 },
                 {
                   "name": "ApiUrl",
-                  "value": "[parameters('apiUrl')]"
+                  "value": "[variables('apiUrl')]"
                 },
                 {
                   "name": "ApiUrlShoppingCart",
-                  "value": "[parameters('apiUrlShoppingCart')]"
+                  "value": "[variables('apiUrlShoppingCart')]"
                 }
               ]
               },
