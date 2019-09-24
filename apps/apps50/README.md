@@ -8,7 +8,10 @@ Along the way, you will be asked to store a number of variables to make it easie
 AKS_BACKEND_ENDPOINT=
 AKS_RESOURCE_GROUP=
 AKS_NAME=
+HOST=
 FRONTEND_RESOURCE_GROUP=
+AUSTRALIA_EAST_SITE=
+EAST_US_SITE=
 AZURE_FD_ENDPOINT=
 ```
 
@@ -102,10 +105,23 @@ After selecting the subscription, resource group, and location or deployment, yo
 
 Update the value of `FRONTEND_RESOURCE_GROUP` in variables.txt with the value used for the name of the resource group that the frontend resources were deployed to.
 
+An azure app services will be deployed to Australia East region with the url:
+"http://tailwindtraders-website-auseast-apps50-" + `Resource Name Suffix` + ".azurewebsites.net"
+
+Store the full value of this url (as http://, not https://) to your variables.txt file as the value for `AUSTRALIA_EAST_SITE`
+It is very important that you always visit this url over http and not https during the demos
+
+An azure app services will be deployed to East US region with the url:
+"http://tailwindtraders-website-eastus-apps50-" + `Resource Name Suffix` + ".azurewebsites.net"
+
+Store the full value of this url (as http://, not https://) to your variables.txt file as the value for `EAST_US_SITE`
+It is very important that you always visit this url over http and not https during the demos
+
 An azure front door instance will be deployed to the url:
 "http://tailwind-apps50-" + `Resource Name Suffix` + ".azurefd.net"
 
-Store the full value of this url to your variables.txt file as the value for `AZURE_FD_ENDPOINT`
+Store the full value of this url (as http://, not https://) to your variables.txt file as the value for `AZURE_FD_ENDPOINT`
+It is very important that you always visit this url over http and not https during the demos
 
 The deployment can take up to 20 minutes to complete.  When it is finished you should see a set of resources similar to the picture above deployed into the resource group that you selected.
 
@@ -120,6 +136,8 @@ Before proceeding to the demos, ensure that you have a file which contains the f
 | AKS_RESOURCE_GROUP   | The name of the resource group that the AKS service is deployed to | Required for Demo 4|
 | HOST   | The CosmosDB Endpoint used by AKS for the my-tt-cart service | Required for Demo 4 |
 | FRONTEND_RESOURCE_GROUP      | The name of the resource group that the Frontend services are deployed to  | Required for Demos 2,3,4 |
+| AUSTRALIA_EAST_SITE      | The http url to the App Service in Australia East  | Required for Demo 3 |
+| EAST_US_SITE      | The http url to the App Service in East US  | Required for Demo 3 |
 | AZURE_FD_ENDPOINT      | The http endpoint to the Azure front door service  | Required for Demos 1,5 |
 
 
