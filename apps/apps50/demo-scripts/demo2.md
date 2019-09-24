@@ -14,7 +14,7 @@
 > We're going to show how Tailwind Traders can instrument their web applications to be able to monitor for usage insights as well as performance issues.
 > We're going to start by create an instance of Application Insights within our Azure Resource Group. You'll see that we've already got this deployed here.
 
-* Go to `tailwindtraders-appinsights-apps50`
+* Go to `FRONTEND_RESOURCE_GROUP` from variables.txt, select the App Insights Instance and go into the overview area
 * Bring attention to `Instrumentation Key` on the overview blade as this is what we're going to need soon after.
 * Mention that we're going to pull our code from [https://github.com/microsoft/TailwindTraders-Website/](https://github.com/microsoft/TailwindTraders-Website/)
 * Open Code to our first tab `package.json` with the terminal already opened

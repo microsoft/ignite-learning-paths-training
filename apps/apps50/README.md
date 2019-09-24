@@ -19,9 +19,57 @@ AZURE_FD_ENDPOINT=
 
 As we progress through the Deployment steps, you will be asked to update values for these variables. This will make it easy to follow along with the demo scripts later on.
 
-First you will need to [deploy the Tailwind Traders Reference Deployment to an AKS instance](https://github.com/neilpeterson/tailwind-reference-deployment#tailwind-traders-aks).  Be sure to select the "Deploy to Azure" button that is under the "Tailwind Traders AKS" heading.  Follow the instructions in the README of the above linked repo to obtain the url of the newly deployed Tailwind Traders website.  We will refer to this value later on as `AKS_BACKEND_ENDPOINT`, please store this value in your variables.txt file where it can be retrieved later.
+First you will need to deploy the Tailwind Traders Reference Deployment into the East US region (It is very important that you deploy into the East US region).  
 
-You should end up with the following deployed resources, take note of the resource group that the backend was deployed to and the Azure Kubernetes Service name, we will use those values in steps that follow.  Store these values in your variables.txt where they can be retrieved later as `AKS_RESOURCE_GROUP` and `AKS_NAME`  respectively:
+In order to deploy this template, you need an Azure Service Principal. If you do not have one, you may create one by following the steps below.
+
+Ensure that you have installed the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) on your machine.
+
+Login to the azure subscription which contains the deployed resources with:
+
+```
+az login
+```
+
+Retrieve your active accounts with:
+```
+az account list
+```
+
+Set the appropriate account (be sure to replace the entirety of `Subscription_Id` with the value of the subscription id containing your deployed AKS instance):
+```
+az account set --subscription Subscription_Id
+```
+
+Create the Service Principal with (be sure to replace UNIQUE_VALUE with a unique value):
+```
+az ad sp create-for-rbac --name UNIQUE_VALUE
+```
+
+You will see an output similar to:
+```
+{
+"appId": "12345678-1234-1234-1234-1234567890ab",
+"displayName": "apps50serviceprinicpal",
+"name": "apps50serviceprinicpal",
+"password": "MyPassword",
+"tenant": "abcdefgh-abcd-abcd-abcd-abcdefghijkl"
+}
+```
+
+You will need the values for `appId` and `password` for the next step, an example of where these will be used is shown below:
+
+![](./assets/backenddeploy.png)
+
+When you are ready, deploy the backend services by clicking the button below:
+
+[![Deploy to Azure](https://azuredeploy.net/deploybutton.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fneilpeterson%2Ftailwind-reference-deployment%2Fmaster%2Fdeployment-artifacts-aks%2Fazuredeploy.json)
+
+This deployment will take around 20 minutes, one of the first items to be deployed into the resource group that you selected is a container instance named `bootstrap-container`.  Navigate to the `bootstap-container` instance in the Azure portal and select "Settings" => "Containers" => "Logs" and scroll down to the bottom of the log output.  Here you can obtain the values for  `AKS_RESOURCE_GROUP` and `AKS_BACKEND_ENDPOINT`, please store these values in your variables.txt file so that they can be retrieved later.
+
+![](./assets/bootstrapcontainer.png)
+
+If the deployment completes successfully, you should end up with the following deployed resources:
 
 ![](./assets/backend.png)
 
@@ -45,7 +93,13 @@ Set the appropriate account (be sure to replace the entirety of `Subscription_Id
 az account set --subscription Subscription_Id
 ```
 
-Now we will attempt to access our AKS instance through the kubernetes dashboard using (be sure to replace the entirety of `AKS_RESOURCE_GROUP` and `AKS_NAME`  with the appropriate values):
+Next, install kubectl and follow the instructions to make the program accessible to your `PATH` with:
+
+```
+az aks install-cli
+```
+
+Now we will attempt to access our AKS instance through the kubernetes dashboard using (be sure to replace the entirety of `AKS_RESOURCE_GROUP` and `AKS_NAME` with the appropriate values):
 
 ```
 az aks browse --resource-group AKS_RESOURCE_GROUP --name AKS_NAME
@@ -55,13 +109,8 @@ The dashboard will attempt to load but you should be met with permissions issues
 
 ![](./assets/k8spermissions.png)
 
-Next, install kubectl and follow the instructions to make the program accessible to your `PATH` with:
 
-```
-az aks install-cli
-```
-
-Obtain the credentials to connect to your AKS instance with (be sure to replace the entirety of `AKS_RESOURCE_GROUP` and `AKS_NAME`  with the appropriate values):
+Obtain the credentials to connect to your AKS instance with (be sure to replace the entirety of `AKS_RESOURCE_GROUP` and `AKS_NAME` with the appropriate values):
 
 ```
 az aks get-credentials --resource-group AKS_RESOURCE_GROUP --name AKS_NAME
@@ -73,7 +122,7 @@ Enable access to all services in the Kubernetes dashboard with:
 kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 ```
 
-Connect to the now accessible Kuberenetes dashboard with (be sure to replace the entirety of `AKS_RESOURCE_GROUP` and `AKS_NAME`  with the appropriate values):
+Connect to the now accessible Kuberenetes dashboard with (be sure to replace the entirety of `AKS_RESOURCE_GROUP` and `AKS_NAME` with the appropriate values):
 
 ```
 az aks browse --resource-group AKS_RESOURCE_GROUP --name AKS_NAME
