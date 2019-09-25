@@ -232,9 +232,239 @@ the pre-trained model generates.
 Some models do more than just classify, too: they can also detect the location
 of objects within images, or analyze the image in other ways.
 
+### SLIDE: Demo: Cognitive Services Computer Vision
+
+Now let's try a pre-trained AI model: Cognitive Service Computer Vision. This
+service will analyze an image you provide, and provide tags (classifications)
+for the object types it things it represents: basically, the labels associated
+with the top confidence scores at the right of the convolutional neural network
+from before.
+
+There's a simple web-based UI you can use to tru it out at
+aka.ms/try-computervision, so let's try it out now. In a moment, I'll also show
+you how to access the API programatically.
+
+DEMO: Using Computer Vision via the Web interface
+
+If you want to incorporate vision capabilities into an app, though, you'll want
+to access the Computer Vision API programatically. Let's see how.
+
+DEMO: Using Computer Vision via the API
+
+So, now you understand why the Shop by Photo feature for Tailwind Traders isn't
+working. The vision model it's using isn't trained to identify the specific
+products that Tailwind Traders sells, or, more likely, it's been trained to
+detect *too many* different kinds of objects, and the wrong one is being found.
+For example, we upload a picture of a hard hat, but it searches instead for
+pictures of helmets.
+
+Fortunately, we can fix that problem. Let's dive back into the theory for a moment.
+
+### SLIDE: Adapting Computer Vision models with your own data
+
+There's a way to start with a vision model that's been pre-trained to identify
+many thousands of images, and adapt it to identify just the objects you're
+interested in -- even if those objects weren't part of the training data for the
+original model! That sounds strange, I know, but let's see how it might work.
+
+### SLIDE: Transfer Learning
+
+Here we have the trained convolutional neural network from before, but
+something's different: the final layer with the object classifications have been
+stripped off. What we're left with is the images -- 3x3 images, perhaps -- from
+the second-last layer. We can ignore the fact that they are images, and just
+think of them as data. Now, when we feed an image to the left hand side, instead
+of getting confidence scores, we get a collection of arrays, or "features", each
+with 9 data points. (In this toy network, they are labelled F1, F2, ... up to
+F8.) Each image you put in on the left side generates a different collection of
+features on the right side.
+
+We don't really know what those features *are*, but what we do know is that they
+are useful -- beacuse they were useful to classify all of the image types the
+neural network was originally trained for. Who knows: one feature might
+represent "greenness", and was useful to classify trees and tennis balls.
+Another might count the number of circle-shaped regions in the image, and was
+useful in classifying bicycles and traffic lights. The point is: those features
+weren't defined in advance: they were _learned_ from the training data, and are
+useful for classifying images _in general_. 
+
+And there's a trick we can use, to use those features to classify objects that
+the original network wasn't even trained on.
+
+### SLIDE: Transfer Learning customvision.ai (1 - with the hammer)
+
+Let's suppose we want a new model to identify hammers and helmets. We can pass
+an images of a hammer on the left, and collect the features on the right. In
+this case, we get 8 data vectors (one for each feature), and a binary indicator
+of the object type. We can repeat that for several different pictures of a
+hammer, and collect the data vectors and the binary indicator each time.
+
+### SLIDE: Transfer Learning customvision.ai (2 - with the hard hat)
+
+Now let's do the same with pictures of hard hats. Again, in each case, we
+collect 8 data vectors and a binary indicator for each image.
+
+Put it all together, and what do you have? A collection of data vectors, which
+we could use to predict a binary outcome. If you've done any data science, you
+can guess what happens next: we could build a simple predictive model, like a
+logistic regression or a one-layer neural network, to predict the new object
+classifications from the features.
+
+It turns out, this often works surprisingly well. You don't even need a lot of
+data -- a few dozen images will often do the trick, as long as they're fairly
+distinct. And you don't need a lot of computing power to predict a hundred or so
+binary outcomes from a relatively small amount of data.
+
+Of course, this is a toy example: you will likely want to identify more than two
+objects, and the underlying neural network will certainly generate many more
+than 8 features at its second-to-last-layer. But the principle remains: you can
+do this with modest new data and computing power, and it often orks really well.
+
+### SLIDE: Microsoft Cognitive Services Custom Vision
+
+Of course, you don't have to train a transfer learning model by yourself. You
+can use the advanced vision models from Cognitive Services Custom Vision as the
+base, and provide your own images and classifications to the service called
+Custom Vision.
+
+Just like with Computer Vision, you can train transfer learning models
+programatically using the API, but Custom Vision also provides a convenient Web
+UI for training models. Let's use that now to train a model for the Shop by
+Photo feature of Tailwind Traders.
+
+### SLIDE: Demo: Customized object recognition
+
+DEMO: Custom Vision
+
 ### SLIDE: Portable Deep Learning Models
 
-A community project launched by Microsoft and Facebook to promote the free exchange and deployment of AI models, and supported by a wide range of applications and technology vendors.
+We exported our custom model in the ONNX format.
+
+ONNX is community project launched by Microsoft and Facebook to promote the free
+exchange and deployment of AI models, and supported by a wide range of
+applications and technology vendors.
+
+Now that we've trained our custom vision model, let's integrate it into the
+Tailwind Traders app.
+
+DEMO: ONNX in TWT
+
+### SLIDE: OnnxImageSearchTermPredictor.cs
+
+Now that we've created our custom model, we can call it in the app using its API. Here we create a new "Inference Session" from the ONNX file we generated, and then generate a classification label as a string. Then we just pass that into the existing search feature of the TWT App and display the results.
+
+```csharp 
+var session = new InferenceSession(filePath);
+
+...
+
+var output = session.Run(new[] { input });
+var prediction = output
+    .First(i => i.Name == "classLabel")
+    .AsEnumerable<string>()
+    .First();
+```
+
+### SLIDE: Adapting Computer Vision models with your own data
+
+We've got time for just one more quick example of pre-built AI, this time from
+the "Decision Category" of Cognitive Services. The "Personalizer" service allows
+us to customize the interface of apps in real-time, balancing on what the user
+is most likely to want to do, coupled with the things that *we would like* the
+user to be doing.
+
+We can see how this might work with the "Recommended" section of the Tailwind
+Traders website. It shows a selection of the departments available in the store:
+one is a large "hero" image, coupled with a few smaller images.
+
+The Personalizer service will choose for us how those sections appear, according to an AI technique called "reinforcement learning".
+
+### SLIDE: Personalizer in Action
+
+Personalizer has been in development at Microsoft for many years. It's used on
+Xbox devices, to determine what activities are featured on the home page, like
+playing an installed game, or purchasing a new game from the store, or watching
+others play on Mixer. Since the introduction of Personalizer, the Xbox team has
+seen a significant lift in key engagement metrics.
+
+Personalizer is also used to optimize the placement of ads in Bing search, and the articles featured in MSN News, again with great results in improving engagement from users.
+
+### SLIDE: Reinforcement Learning
+
+Personalizer implements an AI technique called Reinforcement Learning. Here's
+how it works.
+
+Suppose we want to display a "hero" action to the user. The user might not be
+sure what to do next, but we could display one of several suggestion. For a
+gaming app, that might be: "play a game", "watch a movie", or "join a clan".
+Based on that user's history and other contextual information -- say, their
+location, the time of day, and the day of the week -- the Personalizer service
+will rank the possible actions and suggest the best one to promote. 
+
+Hopefully, the user will be happy, but how can we be sure? That depends on what
+the user does next, and whether that was something we wanted them to do.
+According to our business logic, we'll assign a "reward score" between 0 and 1
+to what happens next. For example, spending more time playing a game or reading
+an article, or spending more money in the store, might lead to higher reward
+scores. Personalizer feeds that info back into the ranking system for the next
+time we need to feature an activity.
+
+### SLIDE: Discovering Patterns and Causality
+
+But this isn't just recommender system, which has the danger of presenting the
+user with things they know they already like. What about the things they would
+like, but don't know about? Personalizer is usually in Exploit mode, where it recommends the best activity based on history and context, but sometimes it also enters Explore mode, and presents the user with new things they might not otherwise see. You control what percentage of the time Explore Mode is activated, to help the user discover new content or features.
+
+DEMO: Personalizer
+
+### SLIDE: Personalizer for Tailwind Traders
+
+For context, for anonymous users, we were using the time of day, day of week,
+and browser OS to influence rankings. The reward was whether or not the hero
+section was clicked. Over time, Personalizer will determine the best category to feature based on time of day, day of week, and OS. It will also "explore" 20% of the time, to surface categories that would otherwise not be presented.
+
+### SLIDE: Personalizer Documentation
+
+For more details on Personalizer, check out its Docs page.
+
+### SLIDE: Pre-built AI in Production
+
+We've seen a few ways that you can use pre-built AI to enhance your applications
+with humanlike capabilities. Let's wrap up with a few things you should keep in
+mind if you plan to deploy these applications in a production app, possibly with
+real-time capabilities for millions of users.
+
+### SLIDE: Cost Considerations
+
+TODO
+
+### SLIDE: Data Considerations
+
+TODO
+
+### SLIDE: Cognitive Services Containers
+
+TODO
+
+### SLIDE: Getting started with Azure Cognitive Services in Containers
+
+TODO
+
+### SLIDE: Ethical Considerations
+
+TODO
+
+### SLIDE: Wrapping up
+
+TODO
+
+
+
+
+
+
+
+
 
 
 
