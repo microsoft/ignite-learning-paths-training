@@ -1,40 +1,9 @@
 # Contributing
 
-We appreciate contributions of any kind and acknowledge them on our [README][readme]. By participating
-in this project, you agree to abide by our [code of conduct](codeofconduct.md).
+This project welcomes contributions and suggestions. Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us the rights to use your contribution. For details, visit https://cla.microsoft.com.
 
-### Any enhancements/bugs/etc you see?
+When you submit a pull request, a CLA-bot will automatically determine whether you need to provide a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions provided by the bot. You will only need to do this once across all repositories using our CLA.
 
-Add an issue. We'll review it, add labels and reply within a few days.
-
-### See an issue you'd like to work on?
-
-Comment on the issue that you'd like to work on it
-and we'll add the `claimed` label. If you see the `claimed` label already on the issue you
-might want to ask the contributor if they'd like some help.
-
-### Documentation/etc need updating?
-
-Go right ahead! Just submit a pull request when you're done.
-
-## Pull Requests
-
-We love pull requests from everyone.
-
-Fork, then clone the repo:
-
-    git clone https://github.com/microsoft/ignite-learning-paths-training.git
-
-**All changes should be based from the `vNext` branch.**
-
-Push to your fork and **submit a pull request** against the `vNext` branch.
-
-At this point you're waiting on us. We like to at least comment on pull requests within three days (and, typically, one day). We may suggest some changes or improvements or alternatives.
-
-Some things that will increase the chance that your pull request is accepted:
-
-- Update [README][readme] with any needed changes
-- Update [CHANGELOG](CHANGELOG.md) with any changes
-- Write a [good commit message]().
-
-[readme]: README.md
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/)
+or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
