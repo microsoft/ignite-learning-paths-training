@@ -77,6 +77,22 @@ Please download all the code and data files in this repository to get started. T
     * Wait for the file to upload
     * Select 'Done'
 
+* Open [powerbi.microsoft.com](http://powerbi.microsoft.com)
+* Log in with your workplace credentials
+* Click on Workspaces on the left pane
+* Click Create a workspace
+* Enter a workspace name
+* Enter a description for the workspace
+* Click Save
+* Open Power BI Desktop with Present.pbix
+* Click Publish
+* Select the workspace name you just created
+* Wait for the report to publish
+* Go back to [powerbi.microsoft.com](http://powerbi.microsoft.com) 
+* Refresh the browser if needed
+* See the report on the left pane in the web browser
+* Click on the report and it will load
+
 
 ## Demo 1 - Explore
 
@@ -161,12 +177,17 @@ Please download all the code and data files in this repository to get started. T
 * Edit the 2nd cell to include the name of your deployed web service
 * Run all cells in notebook and explain the code - **Review the video for all talking points for each demo**
 
-
 ## Demo 4 - Present
 
 ### Video Demo with Voice Over: [AIML21 - Demo 4 - Present](https://youtu.be/g7aBaC9s9qQ)
 
+>Before getting on stage, open Power BI Desktop with [Present.pbix](code/Present.pbix) and [https://powerbi.microsoft.com/](https://powerbi.microsoft.com/) with the workspace and report open from the setup above
 
+* Open Present.pbix 
+* **Review the video for all talking points for each demo**
+* Show the Publish button
+* Open [https://powerbi.microsoft.com/](https://powerbi.microsoft.com/)
+* **Review the video for all talking points for each demo**
 
 # Teardown Instructions
 
