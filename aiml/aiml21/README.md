@@ -202,6 +202,13 @@ Please download all the code and data files in this repository to get started. T
 
 # Resources and Continued Learning
 
+**Microsoft Learn:**
+* [Explore Data Science Tools in Azure](https://docs.microsoft.com/en-us/learn/paths/explore-data-science-tools-in-azure/)
+* [Introduction to Python](https://docs.microsoft.com/en-us/learn/modules/intro-to-python/)
+* [Automate the ML model selection with Azure Machine Learning service](https://docs.microsoft.com/en-us/learn/modules/automate-model-selection-with-azure-automl/)
+* [Create and use analytics reports with Power BI](https://docs.microsoft.com/en-us/learn/paths/create-use-analytics-reports-power-bi/)
+
+
 # Feedback Loop
 
 All speakers will have the opportunity to attend Train-the-Trainer Q&A sessions every month (two sessions covering all timezones) and also after delivering the content on stage we would be keen for you to join us in the Feedback sessions organized to share your experience of the content and anything you would like to provide feedback or ideas on. 
