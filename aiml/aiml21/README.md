@@ -41,10 +41,10 @@ Please download all the code and data files in this repository to get started. T
 * [Power BI Desktop (Windows Only)](https://powerbi.microsoft.com/en-us/desktop/) - if you are running on MacOS/Linux you can still demo the functionality from any modern web browser
 
 **Setup Instructions:**
-* Use the deploy to Azure button below to create your Azure Machine Learning workspace to use throughout the session: **deploy to azure button**
+* Use the **Deploy to Azure button** below to create your Azure Machine Learning workspace to use throughout the session: ---- deploy to azure button ----
 * Log into the Azure Portal and your Azure Machine Learning Service
-* Launch the Preview UI
-* Create a Notebook VM
+* Launch the **Preview UI**
+* Create a **Notebook VM**
     * Select 'Notebook VMs' from left pane
     * Select 'New'
     * Provide a 'Notebook VM Name' (all lowercase)
@@ -57,7 +57,7 @@ Please download all the code and data files in this repository to get started. T
         * [code/deploy.ipynb](code/deploy.ipynb)
         * [code/config.json](code/config.json)
 
-* Create a Compute Instance
+* Create a **Compute Instance**
     * Select 'Compute' from left pane
     * Select 'Add'
     * Provide a 'Compute Name' (all lowercase)
@@ -69,7 +69,7 @@ Please download all the code and data files in this repository to get started. T
     * Minimum number of nodes set to 0 (then it will scale down completely and reduce costs)
     * Click 'Create'
 
-* Upload the Dataset
+* Upload the **Dataset**
     * Select 'Datasets' from left pane
     * Select 'Create dataset' and then 'from local files'
     * Select the 'Browse' button and find the data_train_experiment.csv file
@@ -82,23 +82,57 @@ Please download all the code and data files in this repository to get started. T
 Video Demo with Voice Over: [AIML21 - Demo 1 - Explore](https://youtu.be/1Xtmrsfkzfs)
 
 **Instructions:**
-* Sign into your [Azure Portal](https://azure.microsoft.com/en-gb/) and open the Azure Machine Learning Workspace you created with the template above
-* Launch the Preview experience by clicking 'Launch Preview Now'
-* Open 'Notebook VMs' from the left pane
-* Select the 'Jupyter' Link
-* Double click the user folder
-* Open Explore.ipynb *(recommend having all these tabs open and ready already)*
+* Sign into your [Azure Portal](https://azure.microsoft.com/en-gb/) and open the **Azure Machine Learning Workspace** you created with the template above
+* Launch the Preview experience by clicking **'Launch Preview Now'**
+* Open **'Notebook VMs'** from the left pane
+* Select the **'Jupyter'** Link
+* Double click the **user folder**
 * *Log in if needed with your Azure Credentials*
-* Open Explore.ipynb
-* Make sure all output cells in the notebook are cleared - Select Cell -> All Output -> Clear
-* **Review the video about for talking points for each demo**
+* Open **Explore.ipynb** *(recommend having all these tabs open and ready already)*
+* Make sure all output cells in the notebook are cleared - **Select Cell -> All Output -> Clear**
+* **Review the video for all talking points for each demo**
 * Run through and explain the first 6 cells briefly
-* Note further cells and visualizations are available and attendees should download the code from aka.ms/AIML21repo
+* Note further cells and visualizations are available and attendees should download the code from **[aka.ms/AIML21repo](http://aka.ms/aiml21repo)**
 
 ## Demo 2 - Experiment
 
 * Video Demo with Voice Over: [AIML21 - Demo 2 - Experiment](https://youtu.be/sUKuRBRvo7U)
 
+* Go to [ml.azure.com](https://ml.azure.com/) Azure Machine Learning Preview interface. You can access this via the URL directly and then sign in and select the correct workspace you created for this talk. Or from the Azure Machine Learning Service workspace in the portal selecting the **'Launch Preview now'** button
+* Select **Automated ML** on the left pane
+* **Review the video for all talking points for each demo**
+* Click **'Create experiment'**
+* Provide an experiment name, example/ aiml21-regression-duration
+* Select your Machine Learning compute you setup above
+* Select **Next**
+* Select the dataset you uploaded above
+* Review the preview of the dataset
+* **Deselect** the columns below:
+    * SupportTicketID
+    * CustomerID
+    * DateCreated
+    * DateCompleted
+    * CustomerID2
+    * CompletedTutorial
+    * Rating
+    * GeographyID2
+    * RoleID2
+    * DateCompletedDay
+    * DateCompletedMonth
+    * DateCompletedYear
+* Select **Regression** for Prediction Task
+* Select **Duration** for Target column
+* Select **Advanced Settings** drop down
+* Set Primary metric to **'normalized_root_mean_squared_error'**
+* Set Training Job time (minutes) to **10**
+* Select **Start** button
+
+>> Once it is running, explain it will take some time to run the experiment and you will review a previously run example. 
+>> Please make sure you have a fully run Automated ML regression as explained about before getting on stage
+
+* Select previously run experiment from the Automated ML page from the left, or press the back button from the experiment you just submitted above
+* The previously run experiment will have a long 'Run Id' select this link
+* **Review the video for all talking points for each demo**
 
 ## Demo 3 - Deploy
 
