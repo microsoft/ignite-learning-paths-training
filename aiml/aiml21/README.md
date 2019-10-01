@@ -34,25 +34,75 @@ Along with the video of the presentation, this document will link to all the ass
 
 # Demo Instructions:
 
+Please download all the code and data files in this repository to get started. There is a code and data folder which will contain all information you need to run all demos
+
+**You will need:**
+* Azure Subscription - get a [free trial here](https://azure.microsoft.com/en-gb/free) if you need it
+* [Power BI Desktop (Windows Only)](https://powerbi.microsoft.com/en-us/desktop/) - if you are running on MacOS/Linux you can still demo the functionality from any modern web browser
+
+**Setup Instructions:**
+* Use the deploy to Azure button below to create your Azure Machine Learning workspace to use throughout the session: **deploy to azure button**
+* Log into the Azure Portal and your Azure Machine Learning Service
+* Launch the Preview UI
+* Create a Notebook VM
+    * Select 'Notebook VMs' from left pane
+    * Select 'New'
+    * Provide a 'Notebook VM Name' (all lowercase)
+    * Keep the default size VM provided
+    * Once created select 'Jupyter Link'
+    * Enter the user folder by double clicking
+    * Select the upload button and upload the files listed below:
+        * [data/data_train.csv](data/data_train.csv)
+        * [code/explore.ipynb](code/explore.ipynb)
+        * [code/deploy.ipynb](code/deploy.ipynb)
+        * [code/config.json](code/config.json)
+
+* Create a Compute Instance
+    * Select 'Compute' from left pane
+    * Select 'Add'
+    * Provide a 'Compute Name' (all lowercase)
+    * Select 'Machine Learning Compute' as Compute type
+    * Choose a VM size
+        * For standard compute select something like 'Standard_DS2_v2'
+        * For GPU compute select 'Standard_NC6'
+    * Select 'Low Priority' for Virtual machine priority
+    * Minimum number of nodes set to 0 (then it will scale down completely and reduce costs)
+    * Click 'Create'
+
+* Upload the Dataset
+    * Select 'Datasets' from left pane
+    * Select 'Create dataset' and then 'from local files'
+    * Select the 'Browse' button and find the data_train_experiment.csv file
+    * Wait for the file to upload
+    * Select 'Done'
 
 
-## Demo 1
+## Demo 1 - Explore
 
 Video Demo with Voice Over: [AIML21 - Demo 1 - Explore](https://youtu.be/1Xtmrsfkzfs)
 
-
-## Demo 2
-
-Video Demo with Voice Over: [AIML21 - Demo 2 - Experiment](https://youtu.be/sUKuRBRvo7U)
-
-## Demo 3
-
-Video Demo with Voice Over: [AIML21 - Demo 3 - Deploy](https://youtu.be/IgSaMKsyexg)
+**Instructions:**
+* Sign into your [Azure Portal](https://azure.microsoft.com/en-gb/) and open the Azure Machine Learning Workspace you created with the template above
+* Launch the Preview experience by clicking 'Launch Preview Now'
+* Open 'Notebook VMs' from the left pane
+* Select the 'Jupyter' Link
 
 
-## Demo 4
 
-Video Demo with Voice Over: [AIML21 - Demo 4 - Present](https://youtu.be/g7aBaC9s9qQ)
+
+## Demo 2 - Experiment
+
+* Video Demo with Voice Over: [AIML21 - Demo 2 - Experiment](https://youtu.be/sUKuRBRvo7U)
+
+
+## Demo 3 - Deploy
+
+* Video Demo with Voice Over: [AIML21 - Demo 3 - Deploy](https://youtu.be/IgSaMKsyexg)
+
+
+## Demo 4 - Present
+
+* Video Demo with Voice Over: [AIML21 - Demo 4 - Present](https://youtu.be/g7aBaC9s9qQ)
 
 
 
