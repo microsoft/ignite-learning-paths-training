@@ -191,6 +191,15 @@ Please download all the code and data files in this repository to get started. T
 
 # Teardown Instructions
 
+### Full Teardown
+
+* Enter the Azure Portal and delete the Azure resource group to remove all resources for this project
+
+### To Save Costs
+
+* Make sure you select shutdown on your Notebook VM whenever not in use
+* When not in use delete the Azure Container Instance in endpoints
+
 # Resources and Continued Learning
 
 # Feedback Loop
