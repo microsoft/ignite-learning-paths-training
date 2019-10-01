@@ -86,9 +86,14 @@ Video Demo with Voice Over: [AIML21 - Demo 1 - Explore](https://youtu.be/1Xtmrsf
 * Launch the Preview experience by clicking 'Launch Preview Now'
 * Open 'Notebook VMs' from the left pane
 * Select the 'Jupyter' Link
-
-
-
+* Double click the user folder
+* Open Explore.ipynb *(recommend having all these tabs open and ready already)*
+* *Log in if needed with your Azure Credentials*
+* Open Explore.ipynb
+* Make sure all output cells in the notebook are cleared - Select Cell -> All Output -> Clear
+* **Review the video about for talking points for each demo**
+* Run through and explain the first 6 cells briefly
+* Note further cells and visualizations are available and attendees should download the code from aka.ms/AIML21repo
 
 ## Demo 2 - Experiment
 
