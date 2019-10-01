@@ -23,9 +23,22 @@ code.
 
 - This guide
 - [PowerPoint presentation](https://#) and [Speaker notes](speaker-notes.md)
-- [Full-length recording of presentation](https://#)
-- [Full-length recording of presentation - Director Cut]()
 - [Demo Instructions](demos/demo-instructions.md)
+- [Full-length recording of presentation](https://msit.microsoftstream.com/video/402302a7-a504-473c-81f3-ee226506f62b) (Dry Run 4 recording)
+- [Full-length recording of presentation - Director Cut]()
+
+### Dry Run 4 recording marks:
+
+- 01:02 intro
+- 04:10 deleted content
+- 07:20 overview of Azure Cognitive Services
+- 09:30 Shop by Photo and Computer Vision
+- 20:50 Demo: Cognitive Services and Computer Vision
+- 28:50 Transfer Learning and Custom Vision (deleted content 37:50 – 40:05)
+- 44:05 Personalizer
+- 49:30 AI in Production and Cognitive Services Containers
+- 55:45 end
+
 
 ## Become a Presenter
 

@@ -1,6 +1,7 @@
 # AIML20: Speaker Notes
 
-These are the notes for the PPT presentation at LINK:
+These are the notes for the PPT presentation at:
+https://microsoft.sharepoint.com/:p:/t/CloudDevAdvocacy/EctuTXQCOdpGqc5lhQgUnMgBr-R6hlWR5MuLE3qCIFgoHA?e=r1szwF
 
 ## Slide notes
 
@@ -14,9 +15,10 @@ Pre-presentation walk-in slide
 
 Title slide. Add your own name and contact info here.
 
-### SLIDE (hidden): Outline
+### SLIDE: Resources
 
-Hidden slide. For your own pacing information.
+All links in this deck will be included in the resources hub link. We'll show
+this slide at the end, too.
 
 ### SLIDE: Adding humanlike capabilities to apps
 
@@ -24,55 +26,46 @@ This slide introduces this section, which is an overview of pre-built AI and cog
 
 ### SLIDE: Enhance apps with humanlike capabilities
 
-The purpose of this slide it to explain AI services by way of example. These are services or features that previously required a human input, and can now be automated.
-
-### SLIDE: The vast majority of stored data is never analyzed
-
-Introduce the concept of "Dark Data": documents, media, sensor and app logs,
-etc. that contain valuable data but are difficult to analyze, especially in
-bulk. Useful information is captured in commonalities, trends, and anomalies -- but how can we extract this information? With AI.
-
-### SLIDE: Human insights convert dark data to working data
-
-This slide provides examples of extracting insights from dark data with AI:
-
-- Get trends of visitors over time, and their demographics, from an in-store camera
-
-- Convert meeting recordings into transcripts, annotated by speaker, and do an analysis of who is speaking the most/least
-
-- Take an unstructured collection of documents, analyze the content, and organize the documents by topic for easier retrieval
-
-- Analyze a large collection of images to find usage of the company brand/logo
-
-- Create metrics for customer loyalty by tracking sentiment used in social media posts
-
-In addition, you can surface specific insights by using Cognitive Search. That's the topic of AIML10 in this series: if you missed it, find the recording.
+The purpose of this slide it to explain AI services by way of example. These are
+services or features that previously required a human input, and can now be
+automated.
 
 ### SLIDE: Overview of Azure Cognitive Services
 
-We've talked a lot about how AI techniques can help. But doesn't it take a lot of data, and a lot of technical expertise, to implement?
+We've talked a lot about how AI techniques can help. But doesn't it take a lot
+of data, and a lot of technical expertise, to implement?
 
-No. You can draw on the expertise of Microsoft Research, which has used its extensive data repositories and AI experts to create off-the-shelf AI services in Azure for you to use via simple REST API calls. 
+No. You can draw on the expertise of Microsoft Research, which has used its
+extensive data repositories and AI experts to create off-the-shelf AI services
+in Azure for you to use via simple REST API calls. 
 
 That's Azure Cognitive Services.
 
 ### SLIDE: Azure Cognitive Services
 
-Azure Cognitive Services includes more than two dozen APIs, but at the broadest level they offer capabilities within these cateegories of human capability:
+Azure Cognitive Services includes more than two dozen APIs, but at the broadest
+level they offer capabilities within these cateegories of human capability:
 
-* Vision: Understanding the content of photograws, drawings, text and handwriting, and video
+* Vision: Understanding the content of photograws, drawings, text and
+  handwriting, and video
 
-* Speech: Understand and recognize speech, and generate natural, humanlike spoken voice.
+* Speech: Understand and recognize speech, and generate natural, humanlike
+  spoken voice.
 
-* Language: Understand the content of written documents and text, and translate between human langauges.
+* Language: Understand the content of written documents and text, and translate
+  between human langauges.
 
-* Decision: make humanlike choices about data, content, and application user interfaces.
+* Decision: make humanlike choices about data, content, and application user
+  interfaces.
 
-* Search: answer natural language questions about the content of large, unstructured repositories.
+* Search: answer natural language questions about the content of large,
+  unstructured repositories. 
 
 ### SLIDE: Azure Cognitive Services (with service names)
 
-In this talk, we're going to touch on just a few of the available services, and use them to enhance the website of a retailer:
+The "Search" category was covered in AIML10. In this talk, we're going to touch
+on just a few of the other available services, and use them to enhance the
+website of a retailer:
 
 Computer Vision: analyze the content of product photographs
 
@@ -93,6 +86,8 @@ Tailwind Traders, a fictious retailer, has a "Shop by Photo" feature in its webs
 The idea is that customers can upload a picture of a product they are looking for, find out if Tailwind Traders stocks that item, and locate it in the store.
 
 Unfortunately, it doesn't work very well...
+
+### SLIDE: Demo: Shop by Photo
 
 DEMO: "Defining the problem: Shop by Photo is broken"
 
@@ -171,8 +166,8 @@ corresponding pixel in the output image, aligned to the center pixel of the
 weights grid.
 
 You've probably noticed we can't use the edges of the input image as center
-pixels, which is why the output image is smaller than the input by one row and
-one column. This (along with other types of transformations) is why the image
+pixels, which is why the output image is smaller than the input by two rows and
+two columns. This (along with other types of transformations) is why the image
 gets smaller and smaller as we go down the layers, until it's only one pixel in
 size.
 
@@ -201,7 +196,8 @@ way that the correct node gets the largest value in each case, or at least as
 often as possible.
 
 But in real vision networks, there may be millions of weights to choose, and
-image of labelled images to compute against. How will we determine the weights?
+millions of labelled images to compute against. How will we determine the
+weights?
 
 ### SLIDE: Learning: Backpropagation
 
@@ -213,8 +209,8 @@ reasons.
 First, there are lots of great tools available that will do all that math for
 you, while taking advantage of powerful computing resources like big data stores
 and GPU processors. You've probably heard of tools like Tensorflow or Pytorch
-that do this, and you'll hear more about that in the next talk in this learning
-path. 
+that do this, and you'll hear more about that in the later talks in this
+learning path. 
 
 Secondly, even then, to make use of those tools you'll need: lots of training
 data, those powerful computing resources, and a team of AI engineers to make use
@@ -222,7 +218,7 @@ of it all. Instead, you can just use the resources of a project or company that
 has already used lots of data and compute and expertise to train a neural
 network, and just use that.
 
-### SLIDE: Trained Convolutional NN
+### SLIDE: Pre-Trained Convolutional NN
 
 So, you can just use the model with the pre-determined weights, and as long as
 you only need to detect the object classifications the model is trained for,
@@ -256,7 +252,7 @@ working. The vision model it's using isn't trained to identify the specific
 products that Tailwind Traders sells, or, more likely, it's been trained to
 detect *too many* different kinds of objects, and the wrong one is being found.
 For example, we upload a picture of a hard hat, but it searches instead for
-pictures of helmets.
+pictures of hammers.
 
 Fortunately, we can fix that problem. Let's dive back into the theory for a moment.
 
@@ -291,40 +287,44 @@ useful for classifying images _in general_.
 And there's a trick we can use, to use those features to classify objects that
 the original network wasn't even trained on.
 
-### SLIDE: Transfer Learning customvision.ai (1 - with the hammer)
+### SLIDE: Transfer Learning Training (1 - with the hammer)
 
-Let's suppose we want a new model to identify hammers and helmets. We can pass
+Let's suppose we want a new model to identify hammers and hard hats. We can pass
 an images of a hammer on the left, and collect the features on the right. In
 this case, we get 8 data vectors (one for each feature), and a binary indicator
 of the object type. We can repeat that for several different pictures of a
 hammer, and collect the data vectors and the binary indicator each time.
 
-### SLIDE: Transfer Learning customvision.ai (2 - with the hard hat)
+### SLIDE: Transfer Learning Training (2 - with the white hard hat)
 
 Now let's do the same with pictures of hard hats. Again, in each case, we
 collect 8 data vectors and a binary indicator for each image.
 
-Put it all together, and what do you have? A collection of data vectors, which
-we could use to predict a binary outcome. If you've done any data science, you
-can guess what happens next: we could build a simple predictive model, like a
+Put it all together, and what do you have? A collection of data vectors, each
+with an associated a binary outcome. If you've done any data science, you can
+guess what happens next: we could build a simple predictive model, like a
 logistic regression or a one-layer neural network, to predict the new object
 classifications from the features.
 
+### SLIDE: Transfer Learnng Trained Model
+
 It turns out, this often works surprisingly well. You don't even need a lot of
-data -- a few dozen images will often do the trick, as long as they're fairly
-distinct. And you don't need a lot of computing power to predict a hundred or so
-binary outcomes from a relatively small amount of data.
+data -- a few dozen images will often do the trick, as long as the categories
+you want to predict are fairly distinct. And you don't need a lot of computing
+power to predict a hundred or so binary outcomes from a relatively small amount
+of data.
 
 Of course, this is a toy example: you will likely want to identify more than two
 objects, and the underlying neural network will certainly generate many more
 than 8 features at its second-to-last-layer. But the principle remains: you can
-do this with modest new data and computing power, and it often orks really well.
+do this with modest new data and computing power, and it often works really
+well.
 
 ### SLIDE: Microsoft Cognitive Services Custom Vision
 
 Of course, you don't have to train a transfer learning model by yourself. You
-can use the advanced vision models from Cognitive Services Custom Vision as the
-base, and provide your own images and classifications to the service called
+can use the advanced vision models from Cognitive Services Computer Vision as
+the base, and provide your own images and classifications to the service called
 Custom Vision.
 
 Just like with Computer Vision, you can train transfer learning models
@@ -347,8 +347,6 @@ applications and technology vendors.
 Now that we've trained our custom vision model, let's integrate it into the
 Tailwind Traders app.
 
-DEMO: ONNX in TWT
-
 ### SLIDE: OnnxImageSearchTermPredictor.cs
 
 Now that we've created our custom model, we can call it in the app using its API. Here we create a new "Inference Session" from the ONNX file we generated, and then generate a classification label as a string. Then we just pass that into the existing search feature of the TWT App and display the results.
@@ -365,7 +363,11 @@ var prediction = output
     .First();
 ```
 
-### SLIDE: Adapting Computer Vision models with your own data
+### SLIDE: DEMO: ONNX
+
+DEMO: ONNX in TWT
+
+### SLIDE: Optimizing App UI with Cognitive Services Personalizer
 
 We've got time for just one more quick example of pre-built AI, this time from
 the "Decision Category" of Cognitive Services. The "Personalizer" service allows
@@ -373,11 +375,14 @@ us to customize the interface of apps in real-time, balancing on what the user
 is most likely to want to do, coupled with the things that *we would like* the
 user to be doing.
 
+### SLIDE: Recommended (screenshot)
+
 We can see how this might work with the "Recommended" section of the Tailwind
 Traders website. It shows a selection of the departments available in the store:
 one is a large "hero" image, coupled with a few smaller images.
 
-The Personalizer service will choose for us how those sections appear, according to an AI technique called "reinforcement learning".
+The Personalizer service will choose for us how those sections appear, according
+to an AI technique called "reinforcement learning".
 
 ### SLIDE: Personalizer in Action
 
@@ -387,7 +392,9 @@ playing an installed game, or purchasing a new game from the store, or watching
 others play on Mixer. Since the introduction of Personalizer, the Xbox team has
 seen a significant lift in key engagement metrics.
 
-Personalizer is also used to optimize the placement of ads in Bing search, and the articles featured in MSN News, again with great results in improving engagement from users.
+Personalizer is also used to optimize the placement of ads in Bing search, and
+the articles featured in MSN News, again with great results in improving
+engagement from users.
 
 ### SLIDE: Reinforcement Learning
 
@@ -413,7 +420,11 @@ time we need to feature an activity.
 
 But this isn't just recommender system, which has the danger of presenting the
 user with things they know they already like. What about the things they would
-like, but don't know about? Personalizer is usually in Exploit mode, where it recommends the best activity based on history and context, but sometimes it also enters Explore mode, and presents the user with new things they might not otherwise see. You control what percentage of the time Explore Mode is activated, to help the user discover new content or features.
+like, but don't know about? Personalizer is usually in Exploit mode, where it
+recommends the best activity based on history and context, but sometimes it also
+enters Explore mode, and presents the user with new things they might not
+otherwise see. You control what percentage of the time Explore Mode is
+activated, to help the user discover new content or features.
 
 DEMO: Personalizer
 
@@ -421,11 +432,11 @@ DEMO: Personalizer
 
 For context, for anonymous users, we were using the time of day, day of week,
 and browser OS to influence rankings. The reward was whether or not the hero
-section was clicked. Over time, Personalizer will determine the best category to feature based on time of day, day of week, and OS. It will also "explore" 20% of the time, to surface categories that would otherwise not be presented.
+section was clicked. Over time, Personalizer will determine the best category to
+feature based on time of day, day of week, and OS. It will also "explore" 20% of
+the time, to surface categories that would otherwise not be presented.
 
-### SLIDE: Personalizer Documentation
-
-For more details on Personalizer, check out its Docs page.
+DEMO: Personalizer
 
 ### SLIDE: Pre-built AI in Production
 
@@ -436,48 +447,87 @@ real-time capabilities for millions of users.
 
 ### SLIDE: Cost Considerations
 
-TODO
+This slide is intended to give a general overview of the "model" for pricing in
+cognitive services. In general, if you just want to try out the service, small
+volumes are free. Attendees should check the given link for exact pricing for
+the service they want to use.
 
 ### SLIDE: Data Considerations
 
-TODO
+Your data, like images or text, will be uploaded to Azure for inference, but
+it's never stored by Cognitive Services. This link gives all the details about
+privacy and regulatory compliance. But if you work in a regulated industry, like
+medicine, where data cannot leave your firewall, there is another option:
+containers.
 
-### SLIDE: Cognitive Services Containers
+### SLIDE: Deployment with containers
 
-TODO
-
-### SLIDE: Getting started with Azure Cognitive Services in Containers
-
-TODO
+Some of Cognitive Services is available for use as an independent container. You
+can simply download the container image, deploy it behind your firewall, and
+then use the local endpoints it provides just like you do in Azure. The
+difference is that data never leaves your own network. The only reason the
+container connects to Azure is for billing -- usage is charged in exactly the
+same way as in Azure itself.
 
 ### SLIDE: Ethical Considerations
 
-TODO
+You've seen how easy it is to integrate powerful AI capabilities into your
+applications. But with great power comes great responsibility, and it's
+critically important to understand the impact your application will have on
+people, and consider the ethical implications.
+
+If you're working with AI technogies, you should be working within an ethical
+framework that:
+
+* Focuses on *enabling* people to achieve more in what they already do, rather
+  than replacing humans with AI
+
+* Is *inclusive* of all types of users, so that everyone can benefit equally
+  from your application, and
+
+* Is fair and transparent, and in particular doesn't marginalize
+  underrepresented groups. Remember what we learned earlier: AI is only as good
+  as the data it was trained on, and you need to be sure that your application
+  works for all of your potential users, regardless of who they are or
+  what they look like.
+
+If you don't have an ethical framework set up, a great place to start is
+Microsoft's own principles for artificial intelligence, and you can read more at
+this link.
 
 ### SLIDE: Wrapping up
 
-TODO
+Key points:
+
+* It's easy to add humanlike capabilities with pre-built AI. Pre-built models
+  can't do everything, but they can get you a long way, quickly. We'll learn
+  about custom models for the remaining 20% later in thus learning path.
+
+* You don't need a lot of expertise to get started, but everyone needs to thing
+  about the ethical implications of AI and how it affects people. Make sure you've developed an ethical framework for using AI, and stick to it.
+
+* Finally, AI is powerful, but it isn't magic. It's driven by data and, at its
+  core, fairly simple math. Always keep the data in mind, and use it to help you
+  understand what's going on.
 
 
+### SLIDE: Docs Alert
 
+For all the details on Azure Cognitive Services, including getting started
+guides and references, check out Microsoft Docs.
 
+### SLIDE: MS Learn Alert
 
+And if you'd like to learn how to use Cognitive Services, there are free courses
+on Microsoft Learn that will take you through using them step-by-step.
 
+### SLIDE: Resources
 
+To find links to Docs and Learn, and to all the resources I've mentioned in this
+talk, check out the Session Resources link on this slide. You can also run of
+the demos I gave today yourself, using the code and scripts available in this
+github repository. And if you'd like to get a Microsoft Certificaion in AI or
+Data Science, theres a special offer for a free certificate for attendees today:
+check out this link for details.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Thank you.
