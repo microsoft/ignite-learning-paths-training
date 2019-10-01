@@ -56,6 +56,7 @@ Please download all the code and data files in this repository to get started. T
         * [code/explore.ipynb](code/explore.ipynb)
         * [code/deploy.ipynb](code/deploy.ipynb)
         * [code/config.json](code/config.json)
+    * Open [config.json](code/config.json) and enter your subscription key, resource group and Azure ML Workspace name and save the file
 
 * Create a **Compute Instance**
     * Select 'Compute' from left pane
@@ -79,7 +80,7 @@ Please download all the code and data files in this repository to get started. T
 
 ## Demo 1 - Explore
 
-Video Demo with Voice Over: [AIML21 - Demo 1 - Explore](https://youtu.be/1Xtmrsfkzfs)
+### Video Demo with Voice Over: [AIML21 - Demo 1 - Explore](https://youtu.be/1Xtmrsfkzfs)
 
 **Instructions:**
 * Sign into your [Azure Portal](https://azure.microsoft.com/en-gb/) and open the **Azure Machine Learning Workspace** you created with the template above
@@ -96,7 +97,7 @@ Video Demo with Voice Over: [AIML21 - Demo 1 - Explore](https://youtu.be/1Xtmrsf
 
 ## Demo 2 - Experiment
 
-* Video Demo with Voice Over: [AIML21 - Demo 2 - Experiment](https://youtu.be/sUKuRBRvo7U)
+### Video Demo with Voice Over: [AIML21 - Demo 2 - Experiment](https://youtu.be/sUKuRBRvo7U)
 
 * Go to [ml.azure.com](https://ml.azure.com/) Azure Machine Learning Preview interface. You can access this via the URL directly and then sign in and select the correct workspace you created for this talk. Or from the Azure Machine Learning Service workspace in the portal selecting the **'Launch Preview now'** button
 * Select **Automated ML** on the left pane
@@ -127,8 +128,9 @@ Video Demo with Voice Over: [AIML21 - Demo 1 - Explore](https://youtu.be/1Xtmrsf
 * Set Training Job time (minutes) to **10**
 * Select **Start** button
 
->> Once it is running, explain it will take some time to run the experiment and you will review a previously run example. 
->> Please make sure you have a fully run Automated ML regression as explained about before getting on stage
+> Once it is running, explain it will take some time to run the experiment and you will review a previously run example. 
+
+>Please make sure you have a fully run Automated ML regression as explained about before getting on stage
 
 * Select previously run experiment from the Automated ML page from the left, or press the back button from the experiment you just submitted above
 * The previously run experiment will have a long 'Run Id' select this link
@@ -136,12 +138,33 @@ Video Demo with Voice Over: [AIML21 - Demo 1 - Explore](https://youtu.be/1Xtmrsf
 
 ## Demo 3 - Deploy
 
-* Video Demo with Voice Over: [AIML21 - Demo 3 - Deploy](https://youtu.be/IgSaMKsyexg)
+### Video Demo with Voice Over: [AIML21 - Demo 3 - Deploy](https://youtu.be/IgSaMKsyexg)
+
+> You will use the previously run experiment you reviewed above to deploy
+
+* Start on the screen with the run **Automated ML experiment**
+* Select the **'Deploy Best Model'** button in the top right
+* Create a deployment name, example/ aiml21-v1
+* Add a deployment description if you wish
+* Choose **Deploy** button
+* Comment on the time of the deployment message in the top right corner
+
+>Please make sure you have a fully run Automated ML regression experiment that has already been deployed to an ACI before getting on stage
+
+* Select **Endpoints** on the left pane
+* Select your already created Azure Container Instance model
+* **Review the video for all talking points for each demo**
+* Select the browser tab with Jupyter
+* Open Deploy.ipynb
+* Make sure all output cells in the notebook are cleared - **Select Cell -> All Output -> Clear**
+* Confirm the config.json file is completed with the correct information
+* Edit the 2nd cell to include the name of your deployed web service
+* Run all cells in notebook and explain the code - **Review the video for all talking points for each demo**
 
 
 ## Demo 4 - Present
 
-* Video Demo with Voice Over: [AIML21 - Demo 4 - Present](https://youtu.be/g7aBaC9s9qQ)
+### Video Demo with Voice Over: [AIML21 - Demo 4 - Present](https://youtu.be/g7aBaC9s9qQ)
 
 
 
