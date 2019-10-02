@@ -22,7 +22,7 @@ Along with the video of the presentation, this document will link to all the ass
 
 * This guide
 * [PowerPoint presentation](https://globaleventcdn.blob.core.windows.net/assets/aiml/AIML21_DevelopersGuidetoAI_ADataStory.pptx)
-* Full-length recording of presentation
+* [Full-length recording of presentation](https://youtu.be/K8upKkvtEI0)
 * [Datasets used](aiml21/data)
 * [Code files to run](aiml21/code)
 * Separate Demo Videos: 
