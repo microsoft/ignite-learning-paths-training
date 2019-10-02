@@ -41,7 +41,10 @@ Please download all the code and data files in this repository to get started. T
 * [Power BI Desktop (Windows Only)](https://powerbi.microsoft.com/en-us/desktop/) - if you are running on MacOS/Linux you can still demo the functionality from any modern web browser
 
 **Setup Instructions:**
-* Use the **Deploy to Azure button** below to create your Azure Machine Learning workspace to use throughout the session: ---- deploy to azure button ----
+* Use the **Deploy to Azure button** below to create your Azure Machine Learning workspace to use throughout the session
+
+[![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
+
 * Log into the Azure Portal and your Azure Machine Learning Service
 * Launch the **Preview UI**
 * Create a **Notebook VM**
