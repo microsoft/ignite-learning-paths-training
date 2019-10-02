@@ -4,8 +4,8 @@
 
 We are looking forward to working with all speakers who will deliver the content built below - we welcome your feedback and help to keep the content up-to-date. 
 
-* There are **x5 45 minute sessions** (AIML10, AIML20, AIML30, AIML40 and AIML50)
-* And **x1 20 min theatre session** (AIML21)
+* There are **x5 45 minute sessions** ([AIML10](aiml10/README.md), [AIML20](aiml20/README.md), [AIML30](aiml30/README.md), [AIML40](aiml40/README.md) and [AIML50](aiml50/README.md))
+* And **x1 20 min theatre session** ([AIML21](aiml21/README.md))
 
 ## Learning Path Description
 
