@@ -61,6 +61,8 @@ Please download all the code and data files in this repository to get started. T
         * [code/config.json](code/config.json)
     * Open [config.json](code/config.json) and enter your subscription key, resource group and Azure ML Workspace name and save the file
 
+>Learn more about [Notebook VMs here](https://azure.microsoft.com/en-us/blog/three-things-to-know-about-azure-machine-learning-notebook-vm/?WT.mc_id=msignitethetour2019-github-aiml21)
+
 * Create a **Compute Instance**
     * Select 'Compute' from left pane
     * Select 'Add'
@@ -73,12 +75,16 @@ Please download all the code and data files in this repository to get started. T
     * Minimum number of nodes set to 0 (then it will scale down completely and reduce costs)
     * Click 'Create'
 
+>Learn more about [Azure Machine Learning Compute here](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-set-up-training-targets#amlcompute/?WT.mc_id=msignitethetour2019-github-aiml21)
+
 * Upload the **Dataset**
     * Select 'Datasets' from left pane
     * Select 'Create dataset' and then 'from local files'
     * Select the 'Browse' button and find the data_train_experiment.csv file
     * Wait for the file to upload
     * Select 'Done'
+
+>Learn more about [creating datasets here](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-create-register-datasets/?WT.mc_id=msignitethetour2019-github-aiml21)
 
 * Create a **Power BI Workspace**
     * Open [powerbi.microsoft.com](http://powerbi.microsoft.com/?WT.mc_id=msignitethetour2019-github-aiml21)
