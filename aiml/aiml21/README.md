@@ -1,6 +1,6 @@
 # AIML21: Developers Guide to AI: A Data Story 
 
-## Train-the-Trainer Guide**
+## Train-the-Trainer Guide
 
 ### Session Abstract
 
@@ -8,7 +8,7 @@ In this theatre session we will show the data science process and how to apply i
 
 # How to Use
 
-Welcome, Presenter!
+### Welcome, Presenter!
 
 We're glad you are here and look forward to your delivery of this amazing content. As an experienced presenter, we know you know **HOW** to present so this guide will focus on **WHAT** you need to present. It will provide you a full run-through of the presentation created by the presentation design team.
 
@@ -37,8 +37,8 @@ Along with the video of the presentation, this document will link to all the ass
 Please download all the code and data files in this repository to get started. There is a code and data folder which will contain all information you need to run all demos
 
 **You will need:**
-* Azure Subscription - get a [free trial here](https://azure.microsoft.com/en-gb/free) if you need it
-* [Power BI Desktop (Windows Only)](https://powerbi.microsoft.com/en-us/desktop/) - if you are running on MacOS/Linux you can still demo the functionality from any modern web browser
+* Azure Subscription - get a [free trial here](https://azure.microsoft.com/en-gb/free/?WT.mc_id=msignitethetour2019-github-aiml21) if you need it
+* [Power BI Desktop (Windows Only)](https://powerbi.microsoft.com/en-us/desktop/?WT.mc_id=msignitethetour2019-github-aiml21) - if you are running on MacOS/Linux you can still demo the functionality from any modern web browser
 
 **Setup Instructions:**
 * Use the **Deploy to Azure button** below to create your Azure Machine Learning workspace to use throughout the session
@@ -80,35 +80,36 @@ Please download all the code and data files in this repository to get started. T
     * Wait for the file to upload
     * Select 'Done'
 
-* Open [powerbi.microsoft.com](http://powerbi.microsoft.com)
-* Log in with your workplace credentials
-* Click on Workspaces on the left pane
-* Click Create a workspace
-* Enter a workspace name
-* Enter a description for the workspace
-* Click Save
-* Open Power BI Desktop with Present.pbix
-* Click Publish
-* Select the workspace name you just created
-* Wait for the report to publish
-* Go back to [powerbi.microsoft.com](http://powerbi.microsoft.com) 
-* Refresh the browser if needed
-* See the report on the left pane in the web browser
-* Click on the report and it will load
-
+* Create a **Power BI Workspace**
+    * Open [powerbi.microsoft.com](http://powerbi.microsoft.com/?WT.mc_id=msignitethetour2019-github-aiml21)
+    * Log in with your workplace credentials
+    * Click on Workspaces on the left pane
+    * Click Create a workspace
+    * Enter a workspace name
+    * Enter a description for the workspace
+    * Click Save
+* Publish the **Power BI Report**
+    * Open Power BI Desktop with Present.pbix
+    * Click Publish
+    * Select the workspace name you just created
+    * Wait for the report to publish
+* View the **Power BI Report**
+    * Go back to [powerbi.microsoft.com](http://powerbi.microsoft.com/?WT.mc_id=msignitethetour2019-github-aiml21) 
+    * Refresh the browser if needed
+    * See the report on the left pane in the web browser
+    * Click on the report and it will load
 
 ## Demo 1 - Explore
 
 ### Video Demo with Voice Over: [AIML21 - Demo 1 - Explore](https://youtu.be/1Xtmrsfkzfs)
 
-**Instructions:**
-* Sign into your [Azure Portal](https://azure.microsoft.com/en-gb/) and open the **Azure Machine Learning Workspace** you created with the template above
+* Sign into your [Azure Portal](https://azure.microsoft.com/en-gb/?WT.mc_id=msignitethetour2019-github-aiml21) and open the **Azure Machine Learning Workspace** you created with the template above
 * Launch the Preview experience by clicking **'Launch Preview Now'**
 * Open **'Notebook VMs'** from the left pane
 * Select the **'Jupyter'** Link
 * Double click the **user folder**
 * *Log in if needed with your Azure Credentials*
-* Open **Explore.ipynb** *(recommend having all these tabs open and ready already)*
+* Open [**Explore.ipynb**](code/explore.ipynb) *(recommend having all these tabs open and ready already)*
 * Make sure all output cells in the notebook are cleared - **Select Cell -> All Output -> Clear**
 * **Review the video for all talking points for each demo**
 * Run through and explain the first 6 cells briefly
@@ -118,7 +119,7 @@ Please download all the code and data files in this repository to get started. T
 
 ### Video Demo with Voice Over: [AIML21 - Demo 2 - Experiment](https://youtu.be/sUKuRBRvo7U)
 
-* Go to [ml.azure.com](https://ml.azure.com/) Azure Machine Learning Preview interface. You can access this via the URL directly and then sign in and select the correct workspace you created for this talk. Or from the Azure Machine Learning Service workspace in the portal selecting the **'Launch Preview now'** button
+* Go to [ml.azure.com](https://ml.azure.com/?WT.mc_id=msignitethetour2019-github-aiml21) Azure Machine Learning Preview interface. You can access this via the URL directly and then sign in and select the correct workspace you created for this talk. Or from the Azure Machine Learning Service workspace in the portal selecting the **'Launch Preview now'** button
 * Select **Automated ML** on the left pane
 * **Review the video for all talking points for each demo**
 * Click **'Create experiment'**
@@ -174,7 +175,7 @@ Please download all the code and data files in this repository to get started. T
 * Select your already created Azure Container Instance model
 * **Review the video for all talking points for each demo**
 * Select the browser tab with Jupyter
-* Open Deploy.ipynb
+* Open [Deploy.ipynb](code/deploy.ipynb)
 * Make sure all output cells in the notebook are cleared - **Select Cell -> All Output -> Clear**
 * Confirm the config.json file is completed with the correct information
 * Edit the 2nd cell to include the name of your deployed web service
@@ -184,12 +185,12 @@ Please download all the code and data files in this repository to get started. T
 
 ### Video Demo with Voice Over: [AIML21 - Demo 4 - Present](https://youtu.be/g7aBaC9s9qQ)
 
->Before getting on stage, open Power BI Desktop with [Present.pbix](code/Present.pbix) and [https://powerbi.microsoft.com/](https://powerbi.microsoft.com/) with the workspace and report open from the setup above
+>Before getting on stage, open Power BI Desktop with [Present.pbix](code/Present.pbix) and [https://powerbi.microsoft.com/](https://powerbi.microsoft.com/?WT.mc_id=msignitethetour2019-github-aiml21) with the workspace and report open from the setup above
 
 * Open Present.pbix 
 * **Review the video for all talking points for each demo**
 * Show the Publish button
-* Open [https://powerbi.microsoft.com/](https://powerbi.microsoft.com/)
+* Open [https://powerbi.microsoft.com/](https://powerbi.microsoft.com/?WT.mc_id=msignitethetour2019-github-aiml21)
 * **Review the video for all talking points for each demo**
 
 # Teardown Instructions
@@ -206,14 +207,14 @@ Please download all the code and data files in this repository to get started. T
 # Resources and Continued Learning
 
 **Microsoft Learn:**
-* [Explore Data Science Tools in Azure](https://docs.microsoft.com/en-us/learn/paths/explore-data-science-tools-in-azure/)
-* [Introduction to Python](https://docs.microsoft.com/en-us/learn/modules/intro-to-python/)
-* [Automate the ML model selection with Azure Machine Learning service](https://docs.microsoft.com/en-us/learn/modules/automate-model-selection-with-azure-automl/)
-* [Create and use analytics reports with Power BI](https://docs.microsoft.com/en-us/learn/paths/create-use-analytics-reports-power-bi/)
+* [Explore Data Science Tools in Azure](https://docs.microsoft.com/en-us/learn/paths/explore-data-science-tools-in-azure/?WT.mc_id=msignitethetour2019-github-aiml21)
+* [Introduction to Python](https://docs.microsoft.com/en-us/learn/modules/intro-to-python/?WT.mc_id=msignitethetour2019-github-aiml21)
+* [Automate the ML model selection with Azure Machine Learning service](https://docs.microsoft.com/en-us/learn/modules/automate-model-selection-with-azure-automl/?WT.mc_id=msignitethetour2019-github-aiml21)
+* [Create and use analytics reports with Power BI](https://docs.microsoft.com/en-us/learn/paths/create-use-analytics-reports-power-bi/?WT.mc_id=msignitethetour2019-github-aiml21)
 
 
 # Feedback Loop
 
-All speakers will have the opportunity to attend Train-the-Trainer Q&A sessions every month (two sessions covering all timezones) and also after delivering the content on stage we would be keen for you to join us in the Feedback sessions organized to share your experience of the content and anything you would like to provide feedback or ideas on. 
+All speakers will have the opportunity to attend **Train-the-Trainer Q&A sessions** every month (two sessions covering all timezones) and also after delivering the content on stage we would be keen for you to join us in the **Feedback sessions** organized to share your experience of the content and anything you would like to provide feedback or ideas on. 
 
 Do you have a comment, feedback, suggestion? Currently, the best feedback loop for content changes/suggestions/feedback is to create a new issue on this GitHub repository. To get all the details about how to create an issue please refer to the [Contributing docs](https://github.com/microsoft/ignite-learning-paths/blob/master/contributing.md)
