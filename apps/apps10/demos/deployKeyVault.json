@@ -1,0 +1,73 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.KeyVault/vaults",
+            "apiVersion": "2018-02-14",
+            "name": "keyVault1",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "displayName": "keyVault1"
+            },
+            "properties": {
+                "enabledForDeployment": true,
+                "enabledForTemplateDeployment": true,
+                "enabledForDiskEncryption": true,
+                "tenantId": "tenantId",
+                "accessPolicies": [
+                    {
+                        "tenantId": "tenantId",
+                        "objectId": "objectId",
+                        "permissions": {
+                            "keys": [
+                                "Get" 
+                             ],
+                            "secrets": [
+                                "List",
+                                "Get",
+                                "Set"
+                            ]
+                       }
+                    }
+                ],
+                "sku": {
+                    "name": "standard",
+                    "family": "A"
+                }
+            },
+            "resources": [
+                {
+                    "type": "secrets",
+                    "name": "keyVaultSecret1",
+                    "apiVersion": "2016-10-01",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.KeyVault/vaults', 'keyVault1')]"
+                    ],
+                    "properties": {
+                        "value": "secretValue"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-05-01",
+            "name": "linkedTemplate",
+            "properties": {
+            "mode": "Incremental",
+            "templateLink": {
+                "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
+                "contentVersion":"1.0.0.0"
+            },
+            "parametersLink": {
+                "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
+                "contentVersion":"1.0.0.0"
+            }
+            }
+          }
+    ],
+    "outputs": {}
+}

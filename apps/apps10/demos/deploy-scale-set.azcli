@@ -1,0 +1,48 @@
+
+$RGName="IgniteTourApps"
+$GaleryName="AppsGallery"
+$DefName="demoDefinition"
+$publisher="TradewindTrader"
+
+az group create --name $RGName --location EastUS
+az sig create --resource-group $RGName --gallery-name $GaleryName
+
+
+az sig image-definition create \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --publisher $publisher \
+   --offer myOffer \
+   --sku 16.04-LTS \
+   --os-type Linux 
+
+
+az sig image-definition create \
+   --resource-group $RGName \
+   --gallery-name $GaleryName \
+   --gallery-image-definition demoDefinition \
+   --publisher $publisher \
+   --offer myOffer \
+   --sku 16.04-LTS \
+   --os-type Linux 
+
+
+   az sig image-version create \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --gallery-image-version 1.0.0 \
+   --target-regions "WestCentralUS" "SouthCentralUS=1" "EastUS2=1=Standard_ZRS" \
+   --replica-count 2 \
+   --managed-image "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage"
+
+
+
+
+   az vmss create \
+  -g $RGName \
+  -n myScaleSet \
+  --image "/subscriptions/<subscription ID>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0" \
+  --admin-username azureuser \
+  --generate-ssh-keys
