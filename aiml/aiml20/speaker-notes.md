@@ -3,6 +3,8 @@
 These are the notes for the PPT presentation at:
 https://microsoft.sharepoint.com/:p:/t/CloudDevAdvocacy/EctuTXQCOdpGqc5lhQgUnMgBr-R6hlWR5MuLE3qCIFgoHA?e=r1szwF
 
+Associated demo scripts are found at: https://github.com/microsoft/ignite-learning-paths/tree/master/aiml/aiml20. Start with `DEMO%20Setup.md`.
+
 ## Slide notes
 
 Slides are identified by titles only for now. I'll add slide numbers when the deck is locked,.
@@ -425,8 +427,6 @@ recommends the best activity based on history and context, but sometimes it also
 enters Explore mode, and presents the user with new things they might not
 otherwise see. You control what percentage of the time Explore Mode is
 activated, to help the user discover new content or features.
-
-DEMO: Personalizer
 
 ### SLIDE: Personalizer for Tailwind Traders
 
