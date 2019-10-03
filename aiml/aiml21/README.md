@@ -224,3 +224,33 @@ Please download all the code and data files in this repository to get started. T
 All speakers will have the opportunity to attend **Train-the-Trainer Q&A sessions** every month (two sessions covering all timezones) and also after delivering the content on stage we would be keen for you to join us in the **Feedback sessions** organized to share your experience of the content and anything you would like to provide feedback or ideas on. 
 
 Do you have a comment, feedback, suggestion? Currently, the best feedback loop for content changes/suggestions/feedback is to create a new issue on this GitHub repository. To get all the details about how to create an issue please refer to the [Contributing docs](https://github.com/microsoft/ignite-learning-paths/blob/master/contributing.md)
+
+## Become a Presenter
+
+To become a certified presenter, contact [scalablecontent@microsoft.com](mailto:scalablecontent@microsoft.com). In your email please include:
+
+- Complete name
+- The code of this presentation: aiml21
+- Link to a video of you presenting (~10 minutes in length)(ex: unlisted YouTube video). 
+  > It doesn't need to be this content, the importance is to show your presenter skills
+
+A mentor will get back to you with information on the process.
+
+## Certified Presenters
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+
+<table>
+<tr>
+    <td align="center"><a href="https://github.com/amynic">
+        <img src="https://avatars3.githubusercontent.com/u/13828867?s=400&u=f6aca8528d65d6c191114d3a7328b46137eda162&v=4" width="100px;" alt="Amy Boyd"/><br />
+        <sub><b>Amy Boyd</b></sub></a><br />
+            <a href="https://globaleventcdn.blob.core.windows.net/assets/aiml/AIML21_DevelopersGuidetoAI_ADataStory.pptx" title="Talk">📢</a>
+            <a href="https://github.com/microsoft/ignite-learning-paths-training/pulls?q=is%3Apr+author%3Aamynic+is%3Aclosed" title="Documentation">📖</a> 
+    </td>
+</tr></table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
