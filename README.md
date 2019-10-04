@@ -1,20 +1,20 @@
 # Ignite Learning Paths - Train the trainer
 
-Welcome, Presenter! 
+Welcome, Presenter!
 
-We're glad you are here and look forward to your delivery of this amazing content. As an experienced presenter, we know you know HOW to present so this guide will focus on WHAT you need to present. It will provide you a full run-through of the presentation created by the presentation design team. 
+We're glad you are here and look forward to your delivery of this amazing content. As an experienced presenter, we know you know HOW to present so this guide will focus on WHAT you need to present. It will provide you a full run-through of the presentation created by the presentation design team.
 
-Along with the video of the presentation, this repository will link to all the assets you need to successfully present including PowerPoint slides and demo instructions & code. 
+Along with the video of the presentation, this repository will link to all the assets you need to successfully present including PowerPoint slides and demo instructions & code.
 
 Here all the learning paths available:
 
-- [Building Applications for the Cloud](./apps/README.md)
-- [Developers Guide to AI](./aiml/README.md)
-- [Azure Fundamentals](./afun/README.md)
-- [Managing Cloud Operations](./mco/README.md)
-- [Modernizing Data, Applications, and APIs to the Cloud](./mod/README.md)
-- [Migrating your Server Infrastructure](./msi/README.md)
-- [Improving Your Reliability through Modern Operations Practices](./ops/README.md)
+- [Building Applications for the Cloud](https://github.com/microsoft/ignite-learning-paths-training-apps/README.md)
+- [Developers Guide to AI](https://github.com/microsoft/ignite-learning-paths-training-aiml/README.md)
+- [Azure Fundamentals](https://github.com/microsoft/ignite-learning-paths-training-afun/README.md)
+- [Managing Cloud Operations](https://github.com/microsoft/ignite-learning-paths-training-mco/README.md)
+- [Modernizing Data, Applications, and APIs to the Cloud](https://github.com/microsoft/ignite-learning-paths-training-mod/README.md)
+- [Migrating your Server Infrastructure](https://github.com/microsoft/ignite-learning-paths-training-msi/README.md)
+- [Improving Your Reliability through Modern Operations Practices](https://github.com/microsoft/ignite-learning-paths-training-ops/README.md)
 
 This repository is related to **[Ignite Learning Paths](https://github.com/microsoft/ignite-learning-paths)** Where you will find the presentation.
 

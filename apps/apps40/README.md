@@ -1,1 +1,0 @@
-# Managing Delivery of Your App via DevOps
