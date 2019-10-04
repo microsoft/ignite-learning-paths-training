@@ -8,13 +8,13 @@ Along with the video of the presentation, this repository will link to all the a
 
 Here all the learning paths available:
 
-- [Building Applications for the Cloud](https://github.com/microsoft/ignite-learning-paths-training-apps/README.md)
-- [Developers Guide to AI](https://github.com/microsoft/ignite-learning-paths-training-aiml/README.md)
-- [Azure Fundamentals](https://github.com/microsoft/ignite-learning-paths-training-afun/README.md)
-- [Managing Cloud Operations](https://github.com/microsoft/ignite-learning-paths-training-mco/README.md)
-- [Modernizing Data, Applications, and APIs to the Cloud](https://github.com/microsoft/ignite-learning-paths-training-mod/README.md)
-- [Migrating your Server Infrastructure](https://github.com/microsoft/ignite-learning-paths-training-msi/README.md)
-- [Improving Your Reliability through Modern Operations Practices](https://github.com/microsoft/ignite-learning-paths-training-ops/README.md)
+- [Building Applications for the Cloud](https://github.com/microsoft/ignite-learning-paths-training-apps/)
+- [Developers Guide to AI](https://github.com/microsoft/ignite-learning-paths-training-aiml/)
+- [Azure Fundamentals](https://github.com/microsoft/ignite-learning-paths-training-afun/)
+- [Managing Cloud Operations](https://github.com/microsoft/ignite-learning-paths-training-mco/)
+- [Modernizing Data, Applications, and APIs to the Cloud](https://github.com/microsoft/ignite-learning-paths-training-mod/)
+- [Migrating your Server Infrastructure](https://github.com/microsoft/ignite-learning-paths-training-msi/)
+- [Improving Your Reliability through Modern Operations Practices](https://github.com/microsoft/ignite-learning-paths-training-ops/)
 
 This repository is related to **[Ignite Learning Paths](https://github.com/microsoft/ignite-learning-paths)** Where you will find the presentation.
 
