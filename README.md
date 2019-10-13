@@ -8,19 +8,29 @@ Along with the video of the presentation, this repository will link to all the a
 
 Here all the learning paths available:
 
-- [Building Applications for the Cloud](https://github.com/microsoft/ignite-learning-paths-training-apps/)
-- [Developers Guide to AI](https://github.com/microsoft/ignite-learning-paths-training-aiml/)
-- [Azure Fundamentals](https://github.com/microsoft/ignite-learning-paths-training-afun/)
-- [Managing Cloud Operations](https://github.com/microsoft/ignite-learning-paths-training-mco/)
-- [Modernizing Data, Applications, and APIs to the Cloud](https://github.com/microsoft/ignite-learning-paths-training-mod/)
-- [Migrating your Server Infrastructure](https://github.com/microsoft/ignite-learning-paths-training-msi/)
-- [Improving Your Reliability through Modern Operations Practices](https://github.com/microsoft/ignite-learning-paths-training-ops/)
+- [APPS - Building Applications for the Cloud](https://github.com/microsoft/ignite-learning-paths-training-apps/)
+- [AIML - Developers Guide to AI](https://github.com/microsoft/ignite-learning-paths-training-aiml/)
+- [AFUN - Azure Fundamentals](https://github.com/microsoft/ignite-learning-paths-training-afun/)
+- [MCO - Managing Cloud Operations](https://github.com/microsoft/ignite-learning-paths-training-mco/)
+- [MOD - Modernizing Data, Applications, and APIs to the Cloud](https://github.com/microsoft/ignite-learning-paths-training-mod/)
+- [MSI - Migrating your Server Infrastructure](https://github.com/microsoft/ignite-learning-paths-training-msi/)
+- [OPS - Improving Your Reliability through Modern Operations Practices](https://github.com/microsoft/ignite-learning-paths-training-ops/)
 
 This repository is related to **[Ignite Learning Paths](https://github.com/microsoft/ignite-learning-paths)** Where you will find the presentation.
 
 ## Contributing
 
 To know more about about to contribute to this project please refer to the [Code of Conduct](CODE_OF_CONDUCT.md) and [Contributing](CONTRIBUTING.md) page.
+
+## Become a Presenter
+
+To become a *Trained Presenters*, contact [learningpathmanager@microsoft.com](mailto:learningpathmanager@microsoft.com). In your email please include:
+
+- Complete name:
+- The code of this presentation: \<Session Code (ex:app10)\>
+- Link (ex: unlisted YouTube video) to a video of you presenting (~10 minutes). 
+
+> It doesn't need to be this content, the important is to show your presenter skills
 
 ## Legal Notices
 
