@@ -16,14 +16,46 @@ Along with the video of the presentation, this repository will link to all the a
 
 ## Learning Paths
 
-- [APPS - Building Applications for the Cloud](https://github.com/microsoft/ignite-learning-paths-training-apps/)
-- [AIML - Developers Guide to AI](https://github.com/microsoft/ignite-learning-paths-training-aiml/)
-- [AFUN - Azure Fundamentals](https://github.com/microsoft/ignite-learning-paths-training-afun/)
-- [MCO - Managing Cloud Operations](https://github.com/microsoft/ignite-learning-paths-training-mco/)
-- [MOD - Modernizing Data, Applications, and APIs to the Cloud](https://github.com/microsoft/ignite-learning-paths-training-mod/)
-- [MSI - Migrating your Server Infrastructure](https://github.com/microsoft/ignite-learning-paths-training-msi/)
-- [OPS - Improving Your Reliability through Modern Operations Practices](https://github.com/microsoft/ignite-learning-paths-training-ops/)
+### [APPS - Building Applications for the Cloud](https://github.com/microsoft/ignite-learning-paths-training-apps/) 
+![Learning Path](https://img.shields.io/badge/Learning%20Path-APPS-fe5e00?logo=microsoft)  ![Session](https://img.shields.io/badge/🗣️Sessions-6-31c754)
 
+Want to learn how to build and deploy cloud applications that are easy to manage, reliable, cost-effective, and scale when you need them to? Our worldwide experts will share tips, tools and best practices for building and scaling your applications on the cloud.
+
+
+### [AIML - Developers Guide to AI](https://github.com/microsoft/ignite-learning-paths-training-aiml/)
+![Learning Path](https://img.shields.io/badge/Learning%20Path-AIML-fe5e00?logo=microsoft)  ![Session](https://img.shields.io/badge/🗣️Sessions-6-31c754)
+
+You’ll start with basic data concepts, then explore Azure Cognitive Services before “graduating” into machine learning for developers. By the end, you’ll see how to deploy your machine learning model to production, allowing it be consumed by simple web services.
+
+
+### [AFUN - Azure Fundamentals](https://github.com/microsoft/ignite-learning-paths-training-afun/)
+![Learning Path](https://img.shields.io/badge/Learning%20Path-AFUN-fe5e00?logo=microsoft)  ![Session](https://img.shields.io/badge/🗣️Sessions-10-31c754)
+
+Understand key cloud concepts and core services, including: storage, pricing, compute, messaging, networking, data, identity, and cloud security.
+
+
+### [MCO - Managing Cloud Operations](https://github.com/microsoft/ignite-learning-paths-training-mco/)
+![Learning Path](https://img.shields.io/badge/Learning%20Path-MCO-fe5e00?logo=microsoft)  ![Session](https://img.shields.io/badge/🗣️Sessions-3-31c754)
+
+Learn how to define your organization’s governance, security, and policies within Azure Regulate and organize your Azure subscription, adhering to your compliance preferences and setup guard rails for cost and regional structure.
+
+
+### [MOD - Modernizing Data, Applications, and APIs to the Cloud](https://github.com/microsoft/ignite-learning-paths-training-mod/)
+![Learning Path](https://img.shields.io/badge/Learning%20Path-MOD-fe5e00?logo=microsoft)  ![Session](https://img.shields.io/badge/🗣️Sessions-6-31c754)
+
+Modernize workloads and migrate live databases to the cloud with minimal interruption. Learn how to auto scale your apps, use built-in database threat protection, and create pipelines that build and deploy solutions faster and more reliably.
+
+
+### [MSI - Migrating your Server Infrastructure](https://github.com/microsoft/ignite-learning-paths-training-msi/)
+![Learning Path](https://img.shields.io/badge/Learning%20Path-MSI-fe5e00?logo=microsoft)  ![Session](https://img.shields.io/badge/🗣️Sessions-4-31c754)
+
+For many organizations, cloud adoption starts with assessing your current environment and upgrading to Window Server 2019: a new hybrid ecosystem not previously available. See how to get started and simplify your Windows Server and SQL Server Azure migration.
+
+
+### [OPS - Improving Your Reliability through Modern Operations Practices](https://github.com/microsoft/ignite-learning-paths-training-ops/)
+![Learning Path](https://img.shields.io/badge/Learning%20Path-OPS-fe5e00?logo=microsoft)  ![Session](https://img.shields.io/badge/🗣️Sessions-5-31c754)
+
+The reliability of your systems, services and products has a direct impact on your success. Learn the modern operations principles and practices (and the Azure features that support them) that will help you achieve the level of reliability you need.
 
 
 ## Contributing
