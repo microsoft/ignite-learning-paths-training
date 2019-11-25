@@ -16,7 +16,7 @@ Along with the video of the presentation, this repository will link to all the a
 
 ## Learning Paths
 
-### [APPS - Building Applications for the Cloud](https://github.com/microsoft/ignite-learning-paths-training-apps/) 
+### [APPS - Developing Cloud Native Applications](https://github.com/microsoft/ignite-learning-paths-training-apps/) 
 ![Learning Path](https://img.shields.io/badge/Learning%20Path-APPS-fe5e00?logo=microsoft)  ![Session](https://img.shields.io/badge/🗣️Sessions-6-31c754)
 
 Want to learn how to build and deploy cloud applications that are easy to manage, reliable, cost-effective, and scale when you need them to? Our worldwide experts will share tips, tools and best practices for building and scaling your applications on the cloud.
@@ -40,7 +40,7 @@ Understand key cloud concepts and core services, including: storage, pricing, co
 Learn how to define your organization’s governance, security, and policies within Azure Regulate and organize your Azure subscription, adhering to your compliance preferences and setup guard rails for cost and regional structure.
 
 
-### [MOD - Modernizing Data, Applications, and APIs to the Cloud](https://github.com/microsoft/ignite-learning-paths-training-mod/)
+### [MOD - Modernizing Web Applications and Data](https://github.com/microsoft/ignite-learning-paths-training-mod/)
 ![Learning Path](https://img.shields.io/badge/Learning%20Path-MOD-fe5e00?logo=microsoft)  ![Session](https://img.shields.io/badge/🗣️Sessions-6-31c754)
 
 Modernize workloads and migrate live databases to the cloud with minimal interruption. Learn how to auto scale your apps, use built-in database threat protection, and create pipelines that build and deploy solutions faster and more reliably.
