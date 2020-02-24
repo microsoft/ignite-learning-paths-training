@@ -34,7 +34,7 @@ You’ll start with basic data concepts, then explore Azure Cognitive Services b
 Understand key cloud concepts and core services, including: storage, pricing, compute, messaging, networking, data, identity, and cloud security.
 
 ### [DATA - Modern Data Warehouse](https://github.com/microsoft/ignite-learning-paths-training-data/)
-[![Learning Path](https://img.shields.io/badge/Learning%20Path-DATA-fe5e00?logo=microsoft)](https://github.com/microsoft/ignite-learning-paths-training-data/)  [![Session](https://img.shields.io/badge/🗣️Sessions-5-31c754)](https://github.com/microsoft/ignite-learning-paths-training-afun/#sessions)
+[![Learning Path](https://img.shields.io/badge/Learning%20Path-DATA-fe5e00?logo=microsoft)](https://github.com/microsoft/ignite-learning-paths-training-data/)  [![Session](https://img.shields.io/badge/🗣️Sessions-5-31c754)](https://github.com/microsoft/ignite-learning-paths-training-data/#sessions)
 
 Data is the greatest asset to a company in the process of intelligent decision making. How is my business performing? How do I get more insights to turn from a reactive approach to a pro-active and predictive scenario? In this learning path you’ll about the journey of building out an analytics solution through modern data warehousing as a core engine to provide intelligent decision making.
 
